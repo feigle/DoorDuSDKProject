@@ -1,0 +1,18 @@
+//
+//  DoorDuSDKDemo-Prefix.pch
+//  DoorDuSDKProject
+//
+//  Created by Doordu on 2017/4/13.
+//  Copyright © 2017年 深圳市多度科技有限公司. All rights reserved.
+//
+
+#ifndef DoorDuSDKDemo_Prefix_pch
+#define DoorDuSDKDemo_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define WeakSelf typeof(self) __weak weakSelf = self;
+#define StrongSelf typeof(weakSelf) __strong strongSelf = weakSelf;
+
+#endif /* DoorDuSDKDemo_Prefix_pch */
