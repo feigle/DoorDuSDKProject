@@ -9,6 +9,7 @@
 #import "DoorDuMainViewController.h"
 #import "DoorVideoChatViewController.h"
 #import "DoorIncomingViewController.h"
+#import "UserAccessUserViewController.h"
 #import "DoorDuDataManager.h"
 #import "YYModel.h"
 
@@ -164,7 +165,10 @@
 #pragma mark --房间号呼叫
 - (IBAction)roomCall:(id)sender {
     
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserAccessUserViewController *userAccessUserVC = [sb instantiateViewControllerWithIdentifier:@"UserAccessUserID"];
     
+    [self.navigationController pushViewController:userAccessUserVC animated:YES];
 }
 
 
