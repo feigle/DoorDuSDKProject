@@ -15,4 +15,10 @@
 #define WeakSelf typeof(self) __weak weakSelf = self;
 #define StrongSelf typeof(weakSelf) __strong strongSelf = weakSelf;
 
+
+#define IPHONE4_MODE                                            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IPHONE5_MODE                                            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IPHONE6_MODE                                            ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IPHONE6PLUS_MODE                                        ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
 #endif /* DoorDuSDKDemo_Prefix_pch */

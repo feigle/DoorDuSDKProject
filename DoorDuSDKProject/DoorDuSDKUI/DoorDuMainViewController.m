@@ -10,6 +10,7 @@
 #import "DoorVideoChatViewController.h"
 #import "DoorIncomingViewController.h"
 #import "UserAccessUserViewController.h"
+#import "UserIncomingViewController.h"
 #import "DoorDuDataManager.h"
 #import "YYModel.h"
 
@@ -168,6 +169,8 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserAccessUserViewController *userAccessUserVC = [sb instantiateViewControllerWithIdentifier:@"UserAccessUserID"];
     
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = barButtonItem;
     [self.navigationController pushViewController:userAccessUserVC animated:YES];
 }
 
@@ -183,7 +186,15 @@
 /**接收到户户通来电*/
 - (void)callDidReceiveEachFamilyAccess:(DoorDuEachFamilyAccessCallModel *)model;
 {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserIncomingViewController *userIncomingVC = [sb instantiateViewControllerWithIdentifier:@"UserIncomingID"];
     
+    userIncomingVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    userIncomingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentViewController:userIncomingVC animated:YES completion:nil];
+    
+    topViewContoller = userIncomingVC;
 }
 
 /**接收到门禁呼叫来电*/

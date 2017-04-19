@@ -9,7 +9,8 @@
 //  户户通页面
 
 #import "BaseViewController.h"
+#import "KeyboardButton.h"
 
-@interface UserAccessUserViewController : BaseViewController
+@interface UserAccessUserViewController : BaseViewController<UIActionSheetDelegate, KeyboardButtonDelegate>
 
 @end

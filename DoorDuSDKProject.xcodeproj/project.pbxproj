@@ -43,6 +43,8 @@
 		6A4A51681EA06C6600741F90 /* DoorVideoChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A51671EA06C6600741F90 /* DoorVideoChatViewController.m */; };
 		6A4B1D591EA712D5001499D2 /* UserAccessUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4B1D581EA712D5001499D2 /* UserAccessUserViewController.m */; };
 		6A4B1D5D1EA71349001499D2 /* KeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4B1D5C1EA71349001499D2 /* KeyboardButton.m */; };
+		6A4B1D601EA74541001499D2 /* UserAccessUserChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4B1D5F1EA74541001499D2 /* UserAccessUserChatViewController.m */; };
+		6A4B1D631EA76A56001499D2 /* UserIncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4B1D621EA76A56001499D2 /* UserIncomingViewController.m */; };
 		6A5B7C781EA466B00024C1A4 /* DoorIncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C771EA466B00024C1A4 /* DoorIncomingViewController.m */; };
 		6A5B7C7F1EA4C2CD0024C1A4 /* UIImage+scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C7E1EA4C2CD0024C1A4 /* UIImage+scale.m */; };
 		6A5B7C821EA4C5FD0024C1A4 /* AppHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C811EA4C5FD0024C1A4 /* AppHelp.m */; };
@@ -171,6 +173,10 @@
 		6A4B1D581EA712D5001499D2 /* UserAccessUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAccessUserViewController.m; path = DoorDuSDKLibrary/UserAccessUserViewController.m; sourceTree = "<group>"; };
 		6A4B1D5B1EA71349001499D2 /* KeyboardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardButton.h; sourceTree = "<group>"; };
 		6A4B1D5C1EA71349001499D2 /* KeyboardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardButton.m; sourceTree = "<group>"; };
+		6A4B1D5E1EA74541001499D2 /* UserAccessUserChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccessUserChatViewController.h; sourceTree = "<group>"; };
+		6A4B1D5F1EA74541001499D2 /* UserAccessUserChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccessUserChatViewController.m; sourceTree = "<group>"; };
+		6A4B1D611EA76A56001499D2 /* UserIncomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIncomingViewController.h; sourceTree = "<group>"; };
+		6A4B1D621EA76A56001499D2 /* UserIncomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIncomingViewController.m; sourceTree = "<group>"; };
 		6A5B7C761EA466B00024C1A4 /* DoorIncomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorIncomingViewController.h; sourceTree = "<group>"; };
 		6A5B7C771EA466B00024C1A4 /* DoorIncomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorIncomingViewController.m; sourceTree = "<group>"; };
 		6A5B7C7D1EA4C2CD0024C1A4 /* UIImage+scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+scale.h"; sourceTree = "<group>"; };
@@ -705,6 +711,10 @@
 				6A5B7C771EA466B00024C1A4 /* DoorIncomingViewController.m */,
 				6A4B1D571EA712D5001499D2 /* UserAccessUserViewController.h */,
 				6A4B1D581EA712D5001499D2 /* UserAccessUserViewController.m */,
+				6A4B1D5E1EA74541001499D2 /* UserAccessUserChatViewController.h */,
+				6A4B1D5F1EA74541001499D2 /* UserAccessUserChatViewController.m */,
+				6A4B1D611EA76A56001499D2 /* UserIncomingViewController.h */,
+				6A4B1D621EA76A56001499D2 /* UserIncomingViewController.m */,
 			);
 			path = DoorDuSDKUI;
 			sourceTree = "<group>";
@@ -842,6 +852,7 @@
 				6A42AF411E8B5773009FE7F5 /* DoorDuMQTTMessage.m in Sources */,
 				6AB4AC321E8B87C300744989 /* DoorDuProxyInfo.m in Sources */,
 				6AB4AC201E8B830B00744989 /* DoorDuCommonTypes.m in Sources */,
+				6A4B1D631EA76A56001499D2 /* UserIncomingViewController.m in Sources */,
 				6A42AF311E8B5773009FE7F5 /* DoorDuDataService.m in Sources */,
 				6A42AF491E8B5773009FE7F5 /* DoorDuMQTTCFSocketTransport.m in Sources */,
 				6AB4AC1E1E8B830B00744989 /* DoorDuAudioPlayer.m in Sources */,
@@ -866,6 +877,7 @@
 				727F07B61E8CDA910044CAF3 /* DoorDuClientDelegate.m in Sources */,
 				6A5B7C781EA466B00024C1A4 /* DoorIncomingViewController.m in Sources */,
 				6A42AF431E8B5773009FE7F5 /* DoorDuMQTTSessionLegacy.m in Sources */,
+				6A4B1D601EA74541001499D2 /* UserAccessUserChatViewController.m in Sources */,
 				6A42AF3A1E8B5773009FE7F5 /* DoorDuAFHTTPSessionManager.m in Sources */,
 				6AB4AC1F1E8B830B00744989 /* DoorDuBase64.m in Sources */,
 				6A42AF441E8B5773009FE7F5 /* DoorDuMQTTSessionSynchron.m in Sources */,
