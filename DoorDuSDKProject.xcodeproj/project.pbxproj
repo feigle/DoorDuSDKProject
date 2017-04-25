@@ -48,6 +48,10 @@
 		6A5B7C781EA466B00024C1A4 /* DoorIncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C771EA466B00024C1A4 /* DoorIncomingViewController.m */; };
 		6A5B7C7F1EA4C2CD0024C1A4 /* UIImage+scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C7E1EA4C2CD0024C1A4 /* UIImage+scale.m */; };
 		6A5B7C821EA4C5FD0024C1A4 /* AppHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B7C811EA4C5FD0024C1A4 /* AppHelp.m */; };
+		6A63A5FE1EAF4EEF00BCD0C8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A63A5F51EAF4EEF00BCD0C8 /* SVProgressHUD.bundle */; };
+		6A63A5FF1EAF4EEF00BCD0C8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63A5F71EAF4EEF00BCD0C8 /* SVProgressHUD.m */; };
+		6A63A6001EAF4EEF00BCD0C8 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63A5FA1EAF4EEF00BCD0C8 /* NSObject+YYModel.m */; };
+		6A63A6011EAF4EEF00BCD0C8 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63A5FC1EAF4EEF00BCD0C8 /* YYClassInfo.m */; };
 		6A9961791E8A37CF000AB812 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9961781E8A37CF000AB812 /* main.m */; };
 		6A99617C1E8A37CF000AB812 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A99617B1E8A37CF000AB812 /* AppDelegate.m */; };
 		6A9961841E8A37CF000AB812 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9961831E8A37CF000AB812 /* Assets.xcassets */; };
@@ -55,10 +59,6 @@
 		6AA931A51E9F5AE600150ECE /* SipEngineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7210A2E71E9F11190075231F /* SipEngineSDK.framework */; };
 		6AA931A61E9F5AE600150ECE /* SipEngineSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7210A2E71E9F11190075231F /* SipEngineSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AA931A81E9F5B3B00150ECE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA931A71E9F5B3B00150ECE /* Main.storyboard */; };
-		6AA931B01E9F64A400150ECE /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA931AC1E9F64A400150ECE /* NSObject+YYModel.m */; };
-		6AA931B11E9F64A400150ECE /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA931AE1E9F64A400150ECE /* YYClassInfo.m */; };
-		6AA931B71E9F6B2D00150ECE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6AA931B41E9F6B2D00150ECE /* SVProgressHUD.bundle */; };
-		6AA931B81E9F6B2D00150ECE /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA931B61E9F6B2D00150ECE /* SVProgressHUD.m */; };
 		6AA931BB1E9F6B4E00150ECE /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA931BA1E9F6B4E00150ECE /* BaseViewController.m */; };
 		6AB4AC0E1E8B82F800744989 /* SipEngineDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC081E8B82F800744989 /* SipEngineDelegate.mm */; };
 		6AB4AC0F1E8B82F800744989 /* SipEngineEventObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC0A1E8B82F800744989 /* SipEngineEventObserver.mm */; };
@@ -183,6 +183,14 @@
 		6A5B7C7E1EA4C2CD0024C1A4 /* UIImage+scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+scale.m"; sourceTree = "<group>"; };
 		6A5B7C801EA4C5FD0024C1A4 /* AppHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelp.h; sourceTree = "<group>"; };
 		6A5B7C811EA4C5FD0024C1A4 /* AppHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelp.m; sourceTree = "<group>"; };
+		6A63A5F51EAF4EEF00BCD0C8 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		6A63A5F61EAF4EEF00BCD0C8 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		6A63A5F71EAF4EEF00BCD0C8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		6A63A5F91EAF4EEF00BCD0C8 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		6A63A5FA1EAF4EEF00BCD0C8 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		6A63A5FB1EAF4EEF00BCD0C8 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		6A63A5FC1EAF4EEF00BCD0C8 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		6A63A5FD1EAF4EEF00BCD0C8 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		6A9961741E8A37CF000AB812 /* DoorDuSDKProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoorDuSDKProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A9961781E8A37CF000AB812 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A99617A1E8A37CF000AB812 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,15 +199,7 @@
 		6A9961861E8A37CF000AB812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A9961881E8A37CF000AB812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AA931A71E9F5B3B00150ECE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
-		6AA931AB1E9F64A400150ECE /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
-		6AA931AC1E9F64A400150ECE /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
-		6AA931AD1E9F64A400150ECE /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
-		6AA931AE1E9F64A400150ECE /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
-		6AA931AF1E9F64A400150ECE /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		6AA931B21E9F64E100150ECE /* DoorDuSDKDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DoorDuSDKDemo-Prefix.pch"; path = "../DoorDuSDKDemo-Prefix.pch"; sourceTree = "<group>"; };
-		6AA931B41E9F6B2D00150ECE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		6AA931B51E9F6B2D00150ECE /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		6AA931B61E9F6B2D00150ECE /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		6AA931B91E9F6B4E00150ECE /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		6AA931BA1E9F6B4E00150ECE /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		6AB4AC011E8B81F400744989 /* DoorDuCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuCommonHeader.h; sourceTree = "<group>"; };
@@ -550,6 +550,28 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		6A63A5F41EAF4EEF00BCD0C8 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6A63A5F51EAF4EEF00BCD0C8 /* SVProgressHUD.bundle */,
+				6A63A5F61EAF4EEF00BCD0C8 /* SVProgressHUD.h */,
+				6A63A5F71EAF4EEF00BCD0C8 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		6A63A5F81EAF4EEF00BCD0C8 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				6A63A5F91EAF4EEF00BCD0C8 /* NSObject+YYModel.h */,
+				6A63A5FA1EAF4EEF00BCD0C8 /* NSObject+YYModel.m */,
+				6A63A5FB1EAF4EEF00BCD0C8 /* YYClassInfo.h */,
+				6A63A5FC1EAF4EEF00BCD0C8 /* YYClassInfo.m */,
+				6A63A5FD1EAF4EEF00BCD0C8 /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
 		6A99616B1E8A37CF000AB812 = {
 			isa = PBXGroup;
 			children = (
@@ -599,34 +621,10 @@
 		6AA931A91E9F649300150ECE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				6AA931B31E9F6B2D00150ECE /* SVProgressHUD */,
-				6AA931AA1E9F64A400150ECE /* YYModel */,
+				6A63A5F41EAF4EEF00BCD0C8 /* SVProgressHUD */,
+				6A63A5F81EAF4EEF00BCD0C8 /* YYModel */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		6AA931AA1E9F64A400150ECE /* YYModel */ = {
-			isa = PBXGroup;
-			children = (
-				6AA931AB1E9F64A400150ECE /* NSObject+YYModel.h */,
-				6AA931AC1E9F64A400150ECE /* NSObject+YYModel.m */,
-				6AA931AD1E9F64A400150ECE /* YYClassInfo.h */,
-				6AA931AE1E9F64A400150ECE /* YYClassInfo.m */,
-				6AA931AF1E9F64A400150ECE /* YYModel.h */,
-			);
-			name = YYModel;
-			path = "../../../../代码库/YYModel";
-			sourceTree = "<group>";
-		};
-		6AA931B31E9F6B2D00150ECE /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6AA931B41E9F6B2D00150ECE /* SVProgressHUD.bundle */,
-				6AA931B51E9F6B2D00150ECE /* SVProgressHUD.h */,
-				6AA931B61E9F6B2D00150ECE /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
-			path = "../../../../代码库/SVProgressHUD";
 			sourceTree = "<group>";
 		};
 		6AB4AC041E8B829300744989 /* DoorDuSipCallManager(Sip相关) */ = {
@@ -805,10 +803,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A63A5FE1EAF4EEF00BCD0C8 /* SVProgressHUD.bundle in Resources */,
 				6AA931A81E9F5B3B00150ECE /* Main.storyboard in Resources */,
 				6A9961871E8A37CF000AB812 /* LaunchScreen.storyboard in Resources */,
 				6A9961841E8A37CF000AB812 /* Assets.xcassets in Resources */,
-				6AA931B71E9F6B2D00150ECE /* SVProgressHUD.bundle in Resources */,
 				6A4A515F1EA069D900741F90 /* DoorDuSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,18 +830,17 @@
 				727F07B71E8CDA910044CAF3 /* DoorDuOptions.m in Sources */,
 				6A42AF341E8B5773009FE7F5 /* DoorDuNetServices.m in Sources */,
 				6A42AF3C1E8B5773009FE7F5 /* DoorDuAFSecurityPolicy.m in Sources */,
-				6AA931B81E9F6B2D00150ECE /* SVProgressHUD.m in Sources */,
 				6A42AF361E8B5773009FE7F5 /* DoorDuGlobleConfig.m in Sources */,
 				6A42AF461E8B5773009FE7F5 /* DoorDuMQTTInMemoryPersistence.m in Sources */,
 				6A22D7E41E9CAF2B00ED3635 /* DoorDuEachFamilyAccessCallModel.m in Sources */,
 				727F07BA1E8CDDC30044CAF3 /* DoorDuSipCallManager.mm in Sources */,
-				6AA931B11E9F64A400150ECE /* YYClassInfo.m in Sources */,
 				6A42AF421E8B5773009FE7F5 /* DoorDuMQTTSession.m in Sources */,
 				6A5B7C821EA4C5FD0024C1A4 /* AppHelp.m in Sources */,
 				6A42AF331E8B5773009FE7F5 /* DoorDuError.m in Sources */,
 				6AB4AC381E8B936000744989 /* DoorDuAllRequestParam.m in Sources */,
 				6AB4AC351E8B92D300744989 /* DoorDuDataManager.m in Sources */,
 				6AB4AC0E1E8B82F800744989 /* SipEngineDelegate.mm in Sources */,
+				6A63A5FF1EAF4EEF00BCD0C8 /* SVProgressHUD.m in Sources */,
 				6A42AF3E1E8B5773009FE7F5 /* DoorDuAFURLResponseSerialization.m in Sources */,
 				6A42AF391E8B5773009FE7F5 /* DoorDuMqttOption.m in Sources */,
 				6A42AF4A1E8B5773009FE7F5 /* DoorDuMQTTTransport.m in Sources */,
@@ -856,6 +853,7 @@
 				6A42AF311E8B5773009FE7F5 /* DoorDuDataService.m in Sources */,
 				6A42AF491E8B5773009FE7F5 /* DoorDuMQTTCFSocketTransport.m in Sources */,
 				6AB4AC1E1E8B830B00744989 /* DoorDuAudioPlayer.m in Sources */,
+				6A63A6011EAF4EEF00BCD0C8 /* YYClassInfo.m in Sources */,
 				6A42AF401E8B5773009FE7F5 /* DoorDuMQTTDecoder.m in Sources */,
 				72A0D2901E9CFCA5002900AB /* DoorDuCallManagerDelegate.m in Sources */,
 				6A4B1D5D1EA71349001499D2 /* KeyboardButton.m in Sources */,
@@ -882,9 +880,9 @@
 				6AB4AC1F1E8B830B00744989 /* DoorDuBase64.m in Sources */,
 				6A42AF441E8B5773009FE7F5 /* DoorDuMQTTSessionSynchron.m in Sources */,
 				6A42AF3D1E8B5773009FE7F5 /* DoorDuAFURLRequestSerialization.m in Sources */,
-				6AA931B01E9F64A400150ECE /* NSObject+YYModel.m in Sources */,
 				724008C91E9F2DC400DA7F17 /* DoorDuMainViewController.m in Sources */,
 				6A42AF4C1E8B5773009FE7F5 /* DoorDuMQTTSSLSecurityPolicyDecoder.m in Sources */,
+				6A63A6001EAF4EEF00BCD0C8 /* NSObject+YYModel.m in Sources */,
 				6A22D7E71E9CAF7000ED3635 /* DoorDuDoorCallModel.m in Sources */,
 				6A9961791E8A37CF000AB812 /* main.m in Sources */,
 			);
