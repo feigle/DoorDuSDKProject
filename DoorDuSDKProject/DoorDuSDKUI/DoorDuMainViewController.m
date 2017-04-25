@@ -62,14 +62,20 @@
     [DoorDuClient initDoorDuSDKWithUserInfo:_userInfo];
 }
 
-
+/*
+ APPID：e6mdd6w5mpux6gx1vslq61riowe0mgk1
+ SECRETKEY：yrg35me6yjxd193mrpc2usp5eiz7yurc
+ 
+ 59ae3ec1070fd686c837cc6916057357
+ bb58042b70d6c1b63e32ca293bad1c9f
+*/
 #pragma mark --获取推送令牌
 - (IBAction)getSDKToken:(id)sender {
     
     WeakSelf
     [self show];
-    [DoorDuDataManager getTokenWithAppId:@"59ae3ec1070fd686c837cc6916057357"
-                               secretKey:@"bb58042b70d6c1b63e32ca293bad1c9f"
+    [DoorDuDataManager getTokenWithAppId:@"e6mdd6w5mpux6gx1vslq61riowe0mgk1"
+                               secretKey:@"yrg35me6yjxd193mrpc2usp5eiz7yurc"
                               completion:^(DoorDuToken *token, DoorDuError *error) {
                                   StrongSelf
                                   [strongSelf dismiss];
@@ -89,7 +95,7 @@
     
     WeakSelf
     [self show];
-    [DoorDuDataManager getUserInfoWithMobileNo:@"13365832856"
+    [DoorDuDataManager getUserInfoWithMobileNo:@"18588234262"
                                     nationCode:@"86"
                                     deviceUUID:[[[UIDevice currentDevice] identifierForVendor] UUIDString]
                                     completion:^(DoorDuUserInfo *userInfo, DoorDuError *error) {
