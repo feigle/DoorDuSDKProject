@@ -30,16 +30,16 @@
     }];
 }
 
-+ (void)bindingDeviceToken:(NSString *)token
++ (void)bindingDeviceToken:(NSString *)pushToken
                     userId:(NSString *)userId
                   sdkToken:(NSString *)sdkToken
                 deviceUUID:(NSString *)deviceUUID
                 completion:(void(^)(BOOL isSuccess, DoorDuError *error))completion
 {
     DoorDuPushParam *param = [DoorDuPushParam new];
-    param.token = token;
+    param.token = sdkToken;
     param.user_id = userId;
-    param.device_token = sdkToken;
+    param.device_token = pushToken;
     param.device_guid = deviceUUID;
     param.isBinding = YES;
     

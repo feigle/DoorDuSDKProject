@@ -55,6 +55,11 @@
 
 @implementation DoorDuPushParam
 
+- (DoorDuRequestMethod)buildRequestMethod
+{
+    return DoorDuRequestTypePost;
+}
+
 - (NSString *)buildRequestPath
 {
     if (_isBinding) {
@@ -87,6 +92,10 @@
     if (self.device_token)
     {
         [dic setObject:self.device_token forKey:@"device_token"];
+    }
+    
+    if (_isBinding) {
+        [dic setObject:@"1" forKey:@"system_type"];
     }
     
     return dic;
