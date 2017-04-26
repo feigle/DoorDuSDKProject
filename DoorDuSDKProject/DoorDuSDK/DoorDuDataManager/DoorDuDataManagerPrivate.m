@@ -11,6 +11,7 @@
 #import "DoorDuAllRequestParam.h"
 #import "DoorDuNetServices.h"
 #import "DoorDuProxyInfo.h"
+#import "DoorDuProxyInfo.h"
 
 @implementation DoorDuDataManagerPrivate
 
@@ -22,6 +23,8 @@
       completion:(void(^)(DoorDuCall *callData, DoorDuError *error))completion
 {
     DoorDuCallParam *param = [DoorDuCallParam new];
+    param.token = [DoorDuProxyInfo sharedInstance].token;
+    param.user_id = [DoorDuProxyInfo sharedInstance].userInfo.userId;
     param.device_guid = deviceUUID;
     param.from_room_id = fromRoomId;
     param.to_room_id = toRoomId;

@@ -13,6 +13,8 @@
 #import "DoorDuVideoView.h"
 #import "AppHelp.h"
 
+#import "UserInfoManager.h"
+
 @interface UserAccessUserChatViewController ()<DoorDuCallManagerDelegate>
 {
     NSTimer *timer;
@@ -158,7 +160,7 @@
         
         DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
         
-        [DoorDuClient makeCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:_type localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:nil localVideoView:self.videoPreview remoteVideoView:self.videoView fromRoomID:nil toRoomNo:self.toRoomNO];
+        [DoorDuClient makeCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:_type localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:nil localVideoView:self.videoPreview remoteVideoView:self.videoView fromRoomID:[UserInfoManager shareInstance].roomInfo.roomId toRoomNo:self.toRoomNO];
     }
 }
 

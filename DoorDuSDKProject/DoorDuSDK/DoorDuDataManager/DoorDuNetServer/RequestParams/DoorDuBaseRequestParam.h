@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, DoorDuRequestMethod)
     DoorDuRequestTypePut = 2,
 };
 
-#define DoorDuHttpsRequestTimeOut 25.0
+#define DoorDuHttpsRequestTimeOut 15.0
 
 
 /**

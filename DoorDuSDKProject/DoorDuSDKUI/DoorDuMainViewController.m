@@ -17,6 +17,8 @@
 #import "DoorDuClient.h"
 #import "DoorDuDoorCallModel.h"
 
+#import "UserInfoManager.h"
+
 @interface DoorDuMainViewController ()<DoorDuClientDelegate, DoorDuCallManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -104,6 +106,7 @@
                                         [strongSelf dismiss];
                                         if (userInfo) {
                                             _userInfo = userInfo;
+                                            [UserInfoManager shareInstance].userInfo = userInfo;
                                             [strongSelf setTextValue:[NSString stringWithFormat:@"用户账号信息-> %@", [userInfo yy_modelToJSONString]]];
             
                                             //启动SDK
@@ -141,7 +144,9 @@
         [strongSelf dismiss];
         if (rooms.count > 0) {
             room = [rooms firstObject];
+            [UserInfoManager shareInstance].roomInfo = room;
             doorInfo = [room.doorList firstObject];
+            [UserInfoManager shareInstance].doorInfo = doorInfo;
             NSString *string = [NSString stringWithFormat:@"房间信息-> name:%@ , room_id=%@, room_no=%@ door_list={door_id=%@, door_name=%@, door_guid=%@, door_sip_no=%@...}", room.name, room.roomId, room.roomNo, doorInfo.doorId, doorInfo.doorName, doorInfo.doorGuid, doorInfo.doorCallerNo];
             [strongSelf setTextValue:string];
         }

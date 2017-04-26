@@ -26,13 +26,13 @@
 /**
  绑定推送
  
- @param token               消息推送令牌
+ @param pushToken               消息推送令牌
  @param userId              用户id
  @param sdkToken            sdk授权token
  @param deviceUUID          用户设备唯一编码
  @param completion          结果回调
  */
-+ (void)bindingDeviceToken:(NSString *)token
++ (void)bindingDeviceToken:(NSString *)pushToken
                     userId:(NSString *)userId
                   sdkToken:(NSString *)sdkToken
                 deviceUUID:(NSString *)deviceUUID

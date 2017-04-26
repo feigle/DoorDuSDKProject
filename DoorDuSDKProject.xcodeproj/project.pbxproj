@@ -82,6 +82,7 @@
 		727F07BA1E8CDDC30044CAF3 /* DoorDuSipCallManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 727F07B91E8CDDC30044CAF3 /* DoorDuSipCallManager.mm */; };
 		72A0D2901E9CFCA5002900AB /* DoorDuCallManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0D28F1E9CFCA5002900AB /* DoorDuCallManagerDelegate.m */; };
 		72BA94EB1E94CB3400FCE67E /* DoorDuSipCallDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BA94EA1E94CB3400FCE67E /* DoorDuSipCallDelegate.m */; };
+		FEDC79811EB0816600E14307 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDC79801EB0816600E14307 /* UserInfoManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -250,6 +251,8 @@
 		72A0D28E1E9CFCA5002900AB /* DoorDuCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuCallManagerDelegate.h; sourceTree = "<group>"; };
 		72A0D28F1E9CFCA5002900AB /* DoorDuCallManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuCallManagerDelegate.m; sourceTree = "<group>"; };
 		72BA94EA1E94CB3400FCE67E /* DoorDuSipCallDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuSipCallDelegate.m; sourceTree = "<group>"; };
+		FEDC797F1EB0816600E14307 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		FEDC79801EB0816600E14307 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -697,10 +700,12 @@
 		724008C61E9F2C4600DA7F17 /* DoorDuSDKUI */ = {
 			isa = PBXGroup;
 			children = (
-				6AA931B91E9F6B4E00150ECE /* BaseViewController.h */,
-				6AA931BA1E9F6B4E00150ECE /* BaseViewController.m */,
+				FEDC797F1EB0816600E14307 /* UserInfoManager.h */,
+				FEDC79801EB0816600E14307 /* UserInfoManager.m */,
 				724008CA1E9F486700DA7F17 /* DoorDuSDKLibrary */,
 				6A4B1D5A1EA71349001499D2 /* Views */,
+				6AA931B91E9F6B4E00150ECE /* BaseViewController.h */,
+				6AA931BA1E9F6B4E00150ECE /* BaseViewController.m */,
 				724008C71E9F2DC400DA7F17 /* DoorDuMainViewController.h */,
 				724008C81E9F2DC400DA7F17 /* DoorDuMainViewController.m */,
 				6A4A51661EA06C6600741F90 /* DoorVideoChatViewController.h */,
@@ -832,6 +837,7 @@
 				6A42AF3C1E8B5773009FE7F5 /* DoorDuAFSecurityPolicy.m in Sources */,
 				6A42AF361E8B5773009FE7F5 /* DoorDuGlobleConfig.m in Sources */,
 				6A42AF461E8B5773009FE7F5 /* DoorDuMQTTInMemoryPersistence.m in Sources */,
+				FEDC79811EB0816600E14307 /* UserInfoManager.m in Sources */,
 				6A22D7E41E9CAF2B00ED3635 /* DoorDuEachFamilyAccessCallModel.m in Sources */,
 				727F07BA1E8CDDC30044CAF3 /* DoorDuSipCallManager.mm in Sources */,
 				6A42AF421E8B5773009FE7F5 /* DoorDuMQTTSession.m in Sources */,
