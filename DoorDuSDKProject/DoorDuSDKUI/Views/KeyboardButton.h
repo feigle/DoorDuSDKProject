@@ -1,9 +1,9 @@
 //
 //  KeyboardButton.h
-//  DoorDuShijie
+//  DoorDuSDKProject
 //
-//  Created by doordu-mac on 15/5/20.
-//  Copyright (c) 2015年 DuanRuiying. All rights reserved.
+//  Created by Doordu on 2017/4/14.
+//  Copyright © 2017年 深圳市多度科技有限公司. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
