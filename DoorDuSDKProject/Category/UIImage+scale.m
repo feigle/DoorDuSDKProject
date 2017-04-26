@@ -11,7 +11,6 @@
 @implementation UIImage (scale)
 
 + (UIImage *)scaleImageToScale:(float)scale image:(UIImage *)image {
-    
     CGFloat w = image.size.width;
     CGFloat h = image.size.height;
     UIGraphicsBeginImageContext(CGSizeMake(w * scale, h * scale));
