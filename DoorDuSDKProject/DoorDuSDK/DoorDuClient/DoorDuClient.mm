@@ -195,8 +195,7 @@ static DoorDuClient * doorDuClient = nil;
                 /**通知后台服务器拨打电话成功，开启呼叫定时器*/
                 [strongSelf __startCallTimeOutTimer];
             } else {/**拨打失败*/
-//                [strongSelf __clearDoorDuClientCallData];
-                
+                [strongSelf __clearDoorDuClientCallData];
                 [[DoorDuClient sharedInstance] sipCallFailedOrWrong];
             }
         }];
