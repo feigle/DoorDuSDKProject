@@ -98,7 +98,7 @@ static DoorDuClient * doorDuClient = nil;
 {
     // 连接MQTT服务器
     if (userInfo.topic && userInfo.callerNo) {
-        [DoorDuMQTTManager setDelegate:self];
+        [DoorDuMQTTManager setDelegate:[DoorDuClient sharedInstance]];
         [DoorDuMQTTManager conenctWithTopics:userInfo.topic clientID:userInfo.callerNo];
     }
     
@@ -141,7 +141,7 @@ static DoorDuClient * doorDuClient = nil;
  */
 + (void)registClientDelegate:(id<DoorDuClientDelegate>)delegate
 {
-    [DoorDuClient sharedInstance].clientDelegate = self;
+    [DoorDuClient sharedInstance].clientDelegate = delegate;
 }
 /**移除clientDelegate代理*/
 + (void)removeClientDelegate
@@ -190,7 +190,7 @@ static DoorDuClient * doorDuClient = nil;
             /**呼叫回调 ，如果失败了回调出去*/
             __strong __typeof(weakSelf)strongSelf = weakSelf;
 #warning callData 这里缺少一个参数，一个要拨打对方的roomID（对应拨打房号唯一标示符）
-            if (error.errorCode == DoorDuErrorCodeReqSuccess) {/**请求成功*/
+            if (!error) {/**请求成功*/
                 [DoorDuClient sharedInstance].doorDuCallModel = callData;
                 /**通知后台服务器拨打电话成功，开启呼叫定时器*/
                 [strongSelf __startCallTimeOutTimer];

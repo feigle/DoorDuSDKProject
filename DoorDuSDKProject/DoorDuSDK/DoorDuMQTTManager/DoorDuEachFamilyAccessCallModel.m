@@ -17,15 +17,15 @@
     } else if ([key isEqualToString:@"incomingType"]){
         /**来电类型，0:app来电，1:门禁机来电*/
         self.callType = kDoorDuCallNone;
-        if ([value isEqualToString:@"0"]) {
+        if ([value integerValue] == 0) {
             self.callType = kDoorDuCallEachFamilyAccess;
-        } else if ([value isEqualToString:@"1"]){
+        } else if ([value integerValue] == 1){
             self.callType = kDoorDuCallDoor;
         }
     } else if ([key isEqualToString:@"callType"]){
         /**呼叫类型，0语音呼叫，1视频呼叫*/
         self.mediaCallType = kDoorDuMediaCallTypeAudio;
-        if ([value isEqualToString:@"1"]) {
+        if ([value integerValue] == 1) {
             self.mediaCallType = kDoorDuMediaCallTypeVideo;
         }
     } else {

@@ -19,6 +19,8 @@
 
 #import "UserInfoManager.h"
 
+#import "DoorDuEachFamilyAccessCallModel.h"
+
 @interface DoorDuMainViewController ()<DoorDuClientDelegate, DoorDuCallManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -97,7 +99,7 @@
     
     WeakSelf
     [self show];//18588234262  13410010212
-    [DoorDuDataManager getUserInfoWithMobileNo:@"18588234262"
+    [DoorDuDataManager getUserInfoWithMobileNo:@"13410010212"
                                     nationCode:@"86"
                                     deviceUUID:[[[UIDevice currentDevice] identifierForVendor] UUIDString]
                                     completion:^(DoorDuUserInfo *userInfo, DoorDuError *error) {
@@ -200,6 +202,9 @@
 {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserIncomingViewController *userIncomingVC = [sb instantiateViewControllerWithIdentifier:@"UserIncomingID"];
+    
+    userIncomingVC.fromSipNO = model.appCallerNO;
+    userIncomingVC.callType = 1;
     
     userIncomingVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     userIncomingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

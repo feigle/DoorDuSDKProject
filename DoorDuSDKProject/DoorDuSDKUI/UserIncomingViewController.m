@@ -12,7 +12,7 @@
 #import "DoorDuVideoView.h"
 #import "AppHelp.h"
 
-@interface UserIncomingViewController ()
+@interface UserIncomingViewController ()<DoorDuCallManagerDelegate>
 {
     NSTimer *_timer;
     NSTimer *_callTimeOutTimer;
@@ -144,6 +144,8 @@
     //播放来电语音
     [[DoorDuAudioPlayer sharedInstance] playIncomingAudio:YES];
     
+    [DoorDuClient registCallManagerDelegate:self];
+    
     //开启请求超时监听
     if (_callTimeOutTimer) {
         
@@ -205,7 +207,7 @@
         DoorDuMediaCallType callType = (self.callType == 1) ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
         DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
         
-        [DoorDuClient makeCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:self.fromSipNO localVideoView:self.videoPreview remoteVideoView:self.videoView fromRoomID:self.fromRoomID toRoomNo:self.toRoomID];
+        [DoorDuClient answerCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:self.fromSipNO localVideoView:self.videoPreview remoteVideoView:self.videoView];
 
     }
 }
@@ -344,6 +346,127 @@
     if ([DoorDuClient switchCameraDirection]) {
         self.isFontCamera = !self.isFontCamera;
     }
+}
+
+
+#pragma mark -- DoorDuCallManagerDelegate
+/**
+ *  呼叫被取消(呼入/呼出)
+ */
+- (void)callDidTheCallIsCanceled
+{
+    [self dismissSelf];
+}
+
+/**
+ * 呼叫失败或错误（呼入/呼出）
+ */
+- (void)callDidCallFailedOrWrong
+{
+    [self dismissSelf];
+}
+
+/**
+ * 呼叫被拒接
+ */
+- (void)callDidTheCallWasRejected
+{
+    //停止播放音效
+    [[DoorDuAudioPlayer sharedInstance] stopPlayAudioAndVibrate];
+    //播放门禁主机正忙
+    [[DoorDuAudioPlayer sharedInstance] playDoorisBusyAudio:NO];
+}
+
+/**
+ * 呼叫结束（呼入/呼出）
+ */
+- (void)callDidTheCallEnds
+{
+    [self dismissSelf];
+}
+
+/**
+ * 呼叫接通（呼入/呼出）
+ * @param   supportVideo    呼叫是否支持视频.
+ * @param   supportData     呼叫是否支持数据.
+ */
+- (void)callDidTheCallIsConnectedSupportVideo:(BOOL)supportVideo
+                                  supportData:(BOOL)supportData
+{
+    //停止播放音效
+    [[DoorDuAudioPlayer sharedInstance] stopPlayAudioAndVibrate];
+    
+    //关闭呼叫超时监听
+    if (_callTimeOutTimer) {
+        
+        [_callTimeOutTimer invalidate];
+        _callTimeOutTimer = nil;
+    }
+    
+    //开启自动接听
+    self.isStartAutoAccept = YES;
+    self.tipsLabel.text = @"正在连接中...";
+    
+    self.audioMode_micButton.enabled = NO;
+    self.audioMode_speakerButton.enabled = NO;
+    self.videoMode_switchAudioButton.enabled = NO;
+    self.videoMode_switchCameraButton.enabled = NO;
+    
+    //获取来电类型
+    if (self.callType == 0) {
+        
+        //布局设置
+        self.videoPreview.hidden = YES;
+        self.tips_layoutView.hidden = NO;
+        self.acceptMode_layoutView.hidden = YES;
+        self.audioMode_layoutView.hidden = NO;
+        self.videoMode_layoutView.hidden = YES;
+        
+        //开启计时
+        [self startTimer];
+        
+        //提示语
+        if (!self.isEnableSpeaker) {
+            self.tipsLabel.text = @"请使用听筒接听";
+        }else {
+            self.tipsLabel.text = @"";
+        }
+    }else {
+        //布局设置
+        self.videoPreview.hidden = NO;
+        self.tips_layoutView.hidden = YES;
+        self.acceptMode_layoutView.hidden = YES;
+        self.audioMode_layoutView.hidden = YES;
+        self.videoMode_layoutView.hidden = NO;
+        
+        //开启计时
+        [self startTimer];
+    }
+    
+//    //接听来电
+//    DoorDuMediaCallType callType = (self.callType == 1) ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
+//    DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
+//    
+//    [DoorDuClient answerCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:nil localVideoView:self.videoView remoteVideoView:self.videoPreview];
+}
+
+/**
+ * 远程视频画面尺寸改变
+ * @param   width    宽度.
+ * @param   height   高度.
+ */
+- (void)callDidRemoteVideoScreenSizeChangeWidth:(NSInteger)width
+                                         height:(NSInteger)height
+{
+    
+}
+
+/**
+ *  收到远程终端由视频模式切换到语音模式
+ */
+- (void)callDidReceiveRemoteSwitchVideoModeToAudioMode
+{
+    [self switchAudioButtonAction:nil];
 }
 
 

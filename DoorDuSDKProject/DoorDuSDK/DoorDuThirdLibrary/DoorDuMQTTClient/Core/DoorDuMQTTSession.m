@@ -9,7 +9,7 @@
 #import "DoorDuMQTTSession.h"
 #import "DoorDuMQTTDecoder.h"
 #import "DoorDuMQTTMessage.h"
-
+#import "DoorDuMQTTCoreDataPersistence.h"
 //#define myLogLevel DDLogLevelVerbose
 
 NSString * const DoorDuMQTTSessionErrorDomain = @"DoorDuMQTT";
@@ -63,6 +63,7 @@ NSString * const DoorDuMQTTSessionErrorDomain = @"DoorDuMQTT";
     self.subscribeHandlers = [[NSMutableDictionary alloc] init];
     self.unsubscribeHandlers = [[NSMutableDictionary alloc] init];
     self.publishHandlers = [[NSMutableDictionary alloc] init];
+    self.persistence = [[DoorDuMQTTCoreDataPersistence alloc] init];
     
     self.clientId = nil;
     self.userName = nil;

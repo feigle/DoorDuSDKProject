@@ -82,6 +82,7 @@
 		727F07BA1E8CDDC30044CAF3 /* DoorDuSipCallManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 727F07B91E8CDDC30044CAF3 /* DoorDuSipCallManager.mm */; };
 		72A0D2901E9CFCA5002900AB /* DoorDuCallManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A0D28F1E9CFCA5002900AB /* DoorDuCallManagerDelegate.m */; };
 		72BA94EB1E94CB3400FCE67E /* DoorDuSipCallDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BA94EA1E94CB3400FCE67E /* DoorDuSipCallDelegate.m */; };
+		FEA811141EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA811131EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.m */; };
 		FEDC79811EB0816600E14307 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDC79801EB0816600E14307 /* UserInfoManager.m */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +252,8 @@
 		72A0D28E1E9CFCA5002900AB /* DoorDuCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuCallManagerDelegate.h; sourceTree = "<group>"; };
 		72A0D28F1E9CFCA5002900AB /* DoorDuCallManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuCallManagerDelegate.m; sourceTree = "<group>"; };
 		72BA94EA1E94CB3400FCE67E /* DoorDuSipCallDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuSipCallDelegate.m; sourceTree = "<group>"; };
+		FEA811121EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuMQTTCoreDataPersistence.h; sourceTree = "<group>"; };
+		FEA811131EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuMQTTCoreDataPersistence.m; sourceTree = "<group>"; };
 		FEDC797F1EB0816600E14307 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		FEDC79801EB0816600E14307 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -466,6 +469,8 @@
 		6A42AF181E8B5773009FE7F5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				FEA811121EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.h */,
+				FEA811131EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -847,6 +852,7 @@
 				6AB4AC351E8B92D300744989 /* DoorDuDataManager.m in Sources */,
 				6AB4AC0E1E8B82F800744989 /* SipEngineDelegate.mm in Sources */,
 				6A63A5FF1EAF4EEF00BCD0C8 /* SVProgressHUD.m in Sources */,
+				FEA811141EB85D630060DC2B /* DoorDuMQTTCoreDataPersistence.m in Sources */,
 				6A42AF3E1E8B5773009FE7F5 /* DoorDuAFURLResponseSerialization.m in Sources */,
 				6A42AF391E8B5773009FE7F5 /* DoorDuMqttOption.m in Sources */,
 				6A42AF4A1E8B5773009FE7F5 /* DoorDuMQTTTransport.m in Sources */,

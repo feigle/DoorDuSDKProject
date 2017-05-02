@@ -15,7 +15,7 @@
 
 #define MQTT_RECONNECT_INTERVAL 2.0
 
-static DoorDuMQTTManager *theInstance = nil;
+static DoorDuMQTTManager *mqttInstance = nil;
 
 @interface DoorDuMQTTManager() {
     // 用于重连mqtt
@@ -42,14 +42,14 @@ static DoorDuMQTTManager *theInstance = nil;
 #pragma mark (创建单例)
 + (instancetype)sharedInstance {
     
-    if (theInstance == nil) {
+    if (mqttInstance == nil) {
         static dispatch_once_t oncePredicate;
         dispatch_once(&oncePredicate, ^{
-            theInstance = [[DoorDuMQTTManager alloc] init];
+            mqttInstance = [[DoorDuMQTTManager alloc] init];
         });
     }
     
-    return theInstance;
+    return mqttInstance;
 }
 
 #pragma mark (重载基类)
@@ -79,7 +79,7 @@ static DoorDuMQTTManager *theInstance = nil;
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
 {
-    if (!theInstance.session) {
+    if (!mqttInstance.session) {
         return;
     }
     
@@ -88,7 +88,7 @@ static DoorDuMQTTManager *theInstance = nil;
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
-    if (!theInstance.session) {
+    if (!mqttInstance.session) {
         return;
     }
     
@@ -102,25 +102,25 @@ static DoorDuMQTTManager *theInstance = nil;
 
 + (void)setDelegate:(id<DoorDuMQTTDelegate>)delegate
 {
-    if (!theInstance) {
+    if (!mqttInstance) {
         [DoorDuMQTTManager sharedInstance];
     }
     
-    theInstance.delegate = delegate;
+    mqttInstance.delegate = delegate;
 }
 
 + (void)configMQTTWithOptions:(DoorDuMqttOption *)option
 {
-    if (!theInstance) {
+    if (!mqttInstance) {
         [DoorDuMQTTManager sharedInstance];
     }
     
-    theInstance.mqttOption = option;
-    theInstance.clientID = option.clientId;
+    mqttInstance.mqttOption = option;
+    mqttInstance.clientID = option.clientId;
     //清除回话
     [DoorDuMQTTManager clearCurrentSession];
     
-    theInstance.session = [[DoorDuMQTTSession alloc] initWithClientId:option.clientId
+    mqttInstance.session = [[DoorDuMQTTSession alloc] initWithClientId:option.clientId
                                                              userName:option.userName
                                                              password:option.password
                                                             keepAlive:option.keepAliveInterval                      //客户端确保控制发布的数据包之间的时间间隔不超过存活时间
@@ -141,22 +141,23 @@ static DoorDuMQTTManager *theInstance = nil;
 // 创建MQTT连接
 + (void)conenctWithTopics:(NSArray *)topicArray clientID:(NSString *)clientID
 {
-    if (!theInstance) {
+    if (!mqttInstance) {
         [DoorDuMQTTManager sharedInstance];
     }
     
     // 获取app的sip账号作为MQTT的clientID
-    theInstance.topics = [[NSMutableArray alloc] initWithArray:topicArray];
+    mqttInstance.topics = [[NSMutableArray alloc] initWithArray:topicArray];
+    mqttInstance.clientID = clientID;
     
     // 检查当前回话是否已经存在，如果存在先断开连接
-    if (theInstance.session.status == DoorDuMQTTSessionStatusConnected) {
-        [theInstance.session disconnect];
+    if (mqttInstance.session.status == DoorDuMQTTSessionStatusConnected) {
+        [mqttInstance.session disconnect];
     }else {
         NSString *clientIdString = nil;
         if (!clientID) {
-            clientIdString = theInstance.mqttOption.clientId;
+            clientIdString = mqttInstance.mqttOption.clientId;
         }
-        theInstance.session = [[DoorDuMQTTSession alloc] initWithClientId:clientIdString
+        mqttInstance.session = [[DoorDuMQTTSession alloc] initWithClientId:clientIdString
                                                            userName:nil
                                                            password:nil
                                                           keepAlive:60                              //客户端确保控制发布的数据包之间的时间间隔不超过存活时间
@@ -176,35 +177,35 @@ static DoorDuMQTTManager *theInstance = nil;
 
 + (void)connectAction
 {
-    theInstance.session.delegate = theInstance;
+    mqttInstance.session.delegate = mqttInstance;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        [theInstance.session connectToHost:theInstance.domain port:[DoorDuGlobleConfig sharedInstance].mqttPort];
+        [mqttInstance.session connectToHost:mqttInstance.domain port:[DoorDuGlobleConfig sharedInstance].mqttPort];
     });
 }
 
 + (void)disconnect
 {
-    if (theInstance.session) {
-        [theInstance.session disconnect];
+    if (mqttInstance.session) {
+        [mqttInstance.session disconnect];
     }
 }
 
 + (void)clearCurrentSession
 {
-    if (!theInstance) {
+    if (!mqttInstance) {
         return;
     }
     
-    if (theInstance.session.status == DoorDuMQTTSessionStatusConnected) {
+    if (mqttInstance.session.status == DoorDuMQTTSessionStatusConnected) {
         [DoorDuMQTTManager disconnect];
     }
     
-    theInstance.delegate = nil;
-    theInstance.session = nil;
-    theInstance.payload = nil;
-    theInstance.clientID = nil;
-    theInstance.topics = nil;
+    mqttInstance.delegate = nil;
+    mqttInstance.session = nil;
+    mqttInstance.payload = nil;
+    mqttInstance.clientID = nil;
+    mqttInstance.topics = nil;
 }
 
 /*! @brief DoorDuMQTTManager类方法， 重新连接MQTT
@@ -212,15 +213,15 @@ static DoorDuMQTTManager *theInstance = nil;
  */
 + (void)reconnect
 {
-    if (!theInstance) {
+    if (!mqttInstance) {
         return;
     }
     
     // 检查mqtt客户端id、订阅主题是否为空
-    if (!theInstance.clientID
-        || [theInstance.clientID isEqualToString:@""]
-        || !theInstance.topics
-        || theInstance.topics.count == 0) {
+    if (!mqttInstance.clientID
+        || [mqttInstance.clientID isEqualToString:@""]
+        || !mqttInstance.topics
+        || mqttInstance.topics.count == 0) {
         return;
     }
     
@@ -230,7 +231,7 @@ static DoorDuMQTTManager *theInstance = nil;
 
 + (void)publishMessage:(NSData *)payload onTopic:(NSString *)topic
 {
-    [theInstance publishMessage:payload onTopic:topic withQosLevel:DoorDuMQTTQosLevelAtMostOnce];
+    [mqttInstance publishMessage:payload onTopic:topic withQosLevel:DoorDuMQTTQosLevelAtMostOnce];
 }
 
 - (void)publishMessage:(NSData *)payload onTopic:(NSString *)topic withQosLevel:(DoorDuMQTTQosLevel)level
@@ -275,7 +276,7 @@ static DoorDuMQTTManager *theInstance = nil;
         return;
     }
     
-    if (theInstance.session && transactionID
+    if (mqttInstance.session && transactionID
         && ![transactionID isEqualToString:@""]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -290,7 +291,7 @@ static DoorDuMQTTManager *theInstance = nil;
                                                               options:0
                                                                 error:nil];
             NSString *topic = [NSString stringWithFormat:@"app/room_id/%@", roomID];
-            [theInstance.session publishDataAtMostOnce:payload onTopic:topic];
+            [mqttInstance.session publishDataAtMostOnce:payload onTopic:topic];
         });
     }
 }
@@ -308,16 +309,16 @@ static DoorDuMQTTManager *theInstance = nil;
 - (void)connectionError:(DoorDuMQTTSession *)session error:(NSError *)error
 {
     DoorDuLog(@"DoorDuMQTTManager----------MQTT连接失败");
-    if ([theInstance.delegate respondsToSelector:@selector(mqttConnectError:)]) {
-        [theInstance.delegate mqttConnectError:error];
+    if ([mqttInstance.delegate respondsToSelector:@selector(mqttConnectError:)]) {
+        [mqttInstance.delegate mqttConnectError:error];
     }
 }
 
 - (void)connectionRefused:(DoorDuMQTTSession *)session error:(NSError *)error
 {
     DoorDuLog(@"DoorDuMQTTManager----------MQTT连接被拒");
-    if ([theInstance.delegate respondsToSelector:@selector(mqttConnectRefused:)]) {
-        [theInstance.delegate mqttConnectRefused:error];
+    if ([mqttInstance.delegate respondsToSelector:@selector(mqttConnectRefused:)]) {
+        [mqttInstance.delegate mqttConnectRefused:error];
     }
 }
 
@@ -330,14 +331,24 @@ static DoorDuMQTTManager *theInstance = nil;
     
     //MQTT订阅主题
     DoorDuLog(@"DoorDuMQTTManager----------MQTT已连接");
-    if (theInstance.topics && theInstance.topics.count > 0) {
-        for (NSString *topic in theInstance.topics) {
-            [theInstance.session subscribeToTopic:topic atLevel:DoorDuMQTTQosLevelExactlyOnce];
+    if (mqttInstance.topics && mqttInstance.topics.count > 0) {
+//        for (NSString *topic in mqttInstance.topics) {
+//            [mqttInstance.session subscribeToTopic:topic atLevel:DoorDuMQTTQosLevelExactlyOnce];
+//        }
+        
+        NSMutableDictionary *topics = [NSMutableDictionary dictionary];
+        for (NSString *topic in mqttInstance.topics) {
+            [topics setObject:@"2" forKey:topic];
         }
+        [mqttInstance.session subscribeToTopics:topics subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
+            if (!error) {
+                DoorDuLog(@"mqtt 订阅主题成功!");
+            }
+        }];
     }
     
-    if ([theInstance.delegate respondsToSelector:@selector(mqttConnectedSuccess)]) {
-        [theInstance.delegate mqttConnectedSuccess];
+    if ([mqttInstance.delegate respondsToSelector:@selector(mqttConnectedSuccess)]) {
+        [mqttInstance.delegate mqttConnectedSuccess];
     }
 }
 
@@ -350,13 +361,13 @@ static DoorDuMQTTManager *theInstance = nil;
     }
     
     ddMQTTReconnectTimer = [NSTimer scheduledTimerWithTimeInterval:MQTT_RECONNECT_INTERVAL
-                                                         target:theInstance
+                                                         target:mqttInstance
                                                        selector:@selector(connectMQTT)
                                                        userInfo:nil
                                                         repeats:NO];
     
-    if ([theInstance.delegate respondsToSelector:@selector(mqttConnectedClosed)]) {
-        [theInstance.delegate mqttConnectedClosed];
+    if ([mqttInstance.delegate respondsToSelector:@selector(mqttConnectedClosed)]) {
+        [mqttInstance.delegate mqttConnectedClosed];
     }
 }
 
@@ -367,7 +378,7 @@ static DoorDuMQTTManager *theInstance = nil;
           retained:(BOOL)retained
                mid:(unsigned int)mid {
     // 保存负载数据
-    theInstance.payload = data;
+    mqttInstance.payload = data;
     
     //MQTT消息包消息处理
     [[DoorDuMqttMessageHandle sharedInstance] handleMessageWithMqttPayload:data completion:^(DoorDuMqttMessageType messageType, id messageObj) {

@@ -437,11 +437,11 @@
         [self startTimer];
     }
         
-    //接听来电
-    DoorDuMediaCallType callType = self.isVideoMode ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
-    DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
-    
-    [DoorDuClient answerCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:nil localVideoView:self.videoView remoteVideoView:self.videoPreview];
+//    //接听来电
+//    DoorDuMediaCallType callType = self.isVideoMode ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
+//    DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
+//    
+//    [DoorDuClient answerCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:nil localVideoView:self.videoView remoteVideoView:self.videoPreview];
 }
 
 /**
