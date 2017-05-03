@@ -70,6 +70,12 @@
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:deviceTokenStr forKey:@"deviceToken"];
+    [userDefault synchronize];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"获取deviceToken失败：%@",error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

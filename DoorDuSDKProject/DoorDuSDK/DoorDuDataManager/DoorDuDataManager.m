@@ -49,7 +49,6 @@
         completion(NO, error);
     }];
 }
-
 + (void)unbindingDeviceToken:(NSString *)token
                       userId:(NSString *)userId
                     sdkToken:(NSString *)sdkToken

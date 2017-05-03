@@ -10,6 +10,7 @@
 #import "DoorDuError.h"
 #import "DoorDuAllResponse.h"
 
+/**内部私有数据接口*/
 @interface DoorDuDataManagerPrivate : NSObject
 
 /*! @brief DoorDuDataApi成员函数， 呼叫接口
