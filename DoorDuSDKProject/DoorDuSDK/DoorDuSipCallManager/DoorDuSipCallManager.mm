@@ -637,10 +637,10 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 #pragma mark - 本类中私有的接口在这里
 #pragma mark (获取摄像头和屏幕的夹角)
 + (NSInteger)gainCameraOrientation:(NSInteger)cameraOrientation {
-    //当前呼叫不是视频就不用旋转
-    if ([DoorDuSipCallManager sharedInstance].localMediaCallType != kDoorDuMediaCallTypeVideo) {
-        return 0;
-    }
+//    //当前呼叫不是视频就不用旋转
+//    if ([DoorDuSipCallManager sharedInstance].localMediaCallType != kDoorDuMediaCallTypeVideo) {
+//        return 0;
+//    }
     //App之间通讯旋转
     UIInterfaceOrientation displatyRotation = [[UIApplication sharedApplication] statusBarOrientation];
     NSInteger degrees = 0;
@@ -766,6 +766,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
                                       , fps);
         //设置媒体流为"双向收发"
         videoStream->SetMediaDirection(client::StreamParams::kSendRecv);
+        
         //改变视频尺寸
         [DoorDuSipCallManager changeLocalRemoteVideoSize];
     }
@@ -954,6 +955,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
     [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
     [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
+    [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
     [DoorDuSipCallManager configVideoUI];
     //获取SIP管理器配置SIP属性
     client::SipProfile *profile = [[SipEngineManager sharedInstance] gainCurrentSipProfile];
@@ -1009,9 +1011,8 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
     [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
     [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
+    [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
     [DoorDuSipCallManager configVideoUI];
-    localVideoView.backgroundColor = [UIColor orangeColor];
-    remoteVideoView.backgroundColor = [UIColor orangeColor];
     if (mediaCallType == kDoorDuMediaCallTypeVideo) {//本地视频是否开启
         [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:YES];
     } else {
