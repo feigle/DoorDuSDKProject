@@ -773,9 +773,9 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 /**布局video界面*/
 + (void)configVideoUI
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
         [[DoorDuSipCallManager sharedInstance] configVideoUI];
-    });    
+//    });    
 }
 /**布局video界面-对象方法*/
 - (void)configVideoUI
@@ -1003,7 +1003,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     if ([[SipEngineManager sharedInstance] inCalling]) {//检查是否正在通话
         return;
     }
-    [DoorDuSipCallManager clearVideoUI];
+//    [DoorDuSipCallManager clearVideoUI];
     [DoorDuSipCallManager sharedInstance].localCameraOrientation = localCameraOrientation;
     [DoorDuSipCallManager sharedInstance].microphoneEnable = localMicrophoneEnable;
     [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;

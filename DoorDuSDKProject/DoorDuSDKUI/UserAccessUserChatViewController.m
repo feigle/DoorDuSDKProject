@@ -218,7 +218,7 @@
     
     self.isHangUp = YES;
     [DoorDuClient hangupCurrentCall];
-    [self showWithTitle:@"通话结束"];
+    [self showSuccessWithTitle:@"通话结束"];
     [self dismissSelf];
 }
 
