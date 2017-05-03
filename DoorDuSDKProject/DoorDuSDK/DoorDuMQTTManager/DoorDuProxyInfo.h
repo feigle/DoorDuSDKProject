@@ -14,6 +14,9 @@
 
 // 第三方token
 @property (nonatomic,copy) NSString *token;
+// 当前设备deviceToken字符串
+@property (nonatomic,copy) NSString *deviceTokenString;
+
 // 第三方用户信息
 @property (nonatomic,copy) DoorDuUserInfo *userInfo;
 

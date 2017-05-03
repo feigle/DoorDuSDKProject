@@ -1010,6 +1010,8 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
     [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
     [DoorDuSipCallManager configVideoUI];
+    localVideoView.backgroundColor = [UIColor orangeColor];
+    remoteVideoView.backgroundColor = [UIColor orangeColor];
     if (mediaCallType == kDoorDuMediaCallTypeVideo) {//本地视频是否开启
         [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:YES];
     } else {

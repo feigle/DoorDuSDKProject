@@ -22,6 +22,12 @@
                 secretKey:(NSString *)secretKey
                completion:(void(^)(DoorDuToken *token, DoorDuError *error))completion;
 
+/** 向Doordu注册该设备的deviceToken，便于发送Push消息
+ @param deviceToken APNs返回的deviceToken
+ */
++ (void)registerDeviceToken:(NSData *)deviceToken;
+/**获取deviceToken字符串*/
++ (NSString *)getDeviceTokenString;
 
 /**
  绑定推送

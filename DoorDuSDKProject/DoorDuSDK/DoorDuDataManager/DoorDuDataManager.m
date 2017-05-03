@@ -29,7 +29,21 @@
         completion(nil, error);
     }];
 }
-
+/** 向Doordu注册该设备的deviceToken，便于发送Push消息
+ @param deviceToken APNs返回的deviceToken
+ */
++ (void)registerDeviceToken:(NSData *)deviceToken
+{
+    NSString *deviceTokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
+                                 stringByReplacingOccurrencesOfString:@">" withString:@""]
+                                stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [DoorDuProxyInfo sharedInstance].deviceTokenString = deviceTokenStr;
+}
+/**获取deviceToken字符串*/
++ (NSString *)getDeviceTokenString
+{
+    return [DoorDuProxyInfo sharedInstance].deviceTokenString;
+}
 + (void)bindingDeviceToken:(NSString *)pushToken
                     userId:(NSString *)userId
                   sdkToken:(NSString *)sdkToken

@@ -11,6 +11,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <AddressBook/AddressBook.h>
 #import <AVFoundation/AVFoundation.h>
+#import "DoorDuDataManager.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -64,13 +65,7 @@
 #pragma mark -- 注册通知成功回调
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSString *deviceTokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
-                                 stringByReplacingOccurrencesOfString:@">" withString:@""]
-                                stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:deviceTokenStr forKey:@"deviceToken"];
-    [userDefault synchronize];
+    [DoorDuDataManager registerDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

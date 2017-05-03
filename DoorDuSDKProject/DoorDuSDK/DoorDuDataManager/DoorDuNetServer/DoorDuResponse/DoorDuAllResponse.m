@@ -235,6 +235,8 @@
         self.transactionId = value;
     }else if ([key isEqualToString:@"sip_list"]) {
         self.callerList = value;
+    }else if ([key isEqualToString:@"to_room_id"]) {
+        self.toRoomId = value;
     }else {
         [super setValue:value forKey:key];
     }

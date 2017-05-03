@@ -21,7 +21,7 @@
 
 #import "DoorDuEachFamilyAccessCallModel.h"
 
-@interface DoorDuMainViewController ()<DoorDuClientDelegate, DoorDuCallManagerDelegate>
+@interface DoorDuMainViewController ()<DoorDuClientDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -49,7 +49,6 @@
     [super viewWillAppear:animated];
     
     [DoorDuClient registClientDelegate:self];
-    [DoorDuClient registCallManagerDelegate:self];
 }
 
 #pragma mark -- 初始化DoorDuSDK
@@ -115,9 +114,7 @@
                                             [strongSelf initDoorDuSDK];
                                             
                                             //绑定通知
-                                            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-                                            NSString *deviceTokenStr = [userDefault objectForKey:@"deviceToken"];
-                                            
+                                            NSString *deviceTokenStr = [DoorDuDataManager getDeviceTokenString];
                                             [DoorDuDataManager bindingDeviceToken:deviceTokenStr
                                                                            userId:userInfo.userId
                                                                          sdkToken:tokenStr
@@ -204,7 +201,7 @@
     UserIncomingViewController *userIncomingVC = [sb instantiateViewControllerWithIdentifier:@"UserIncomingID"];
     
     userIncomingVC.fromSipNO = model.appCallerNO;
-    userIncomingVC.callType = 1;
+    userIncomingVC.mediaCallType = model.mediaCallType;
     
     userIncomingVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     userIncomingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

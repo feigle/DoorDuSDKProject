@@ -247,7 +247,6 @@ static DoorDuClient * doorDuClient = nil;
     if ([self isExistCall]) {/**判断当前是否在通话中，如果在通话中就挂断电话，如果没有接通就发送MQTT消息，主叫方挂断了消息，其他接听了也要挂断了*/
         [DoorDuSipCallManager hangupCurrentCall];
     } else {/**发送MQTT消息，发送挂断通知*/
-#warning mark - 这里的MQTT推送要改一下，因为这里不知道roomID,加上之后这里警告删了⚠️
         if ([DoorDuClient sharedInstance].doorDuCallModel) {
             [DoorDuMQTTManager publishCallEnd:@"" roomID:[DoorDuClient sharedInstance].doorDuCallModel.toRoomId transactionID:[DoorDuClient sharedInstance].doorDuCallModel.transactionId];
         }

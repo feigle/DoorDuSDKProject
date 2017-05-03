@@ -369,6 +369,7 @@
     [[DoorDuAudioPlayer sharedInstance] stopPlayAudioAndVibrate];
     //播放门禁主机正忙
     [[DoorDuAudioPlayer sharedInstance] playDoorisBusyAudio:NO];
+    [self dismissSelf];
 }
 
 /**

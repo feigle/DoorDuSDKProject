@@ -7,11 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "DoorDuClientEnum.h"
 
 @interface UserIncomingViewController : BaseViewController
 
 @property (copy, nonatomic, readwrite) NSString *transactionID;
-@property (assign, nonatomic, readwrite) int callType;//呼叫类型，0语音呼叫，1视频呼叫
+@property (nonatomic,assign) DoorDuMediaCallType mediaCallType;/**呼叫类型，0语音呼叫，1视频呼叫*/
 @property (copy, nonatomic, readwrite) NSString *fromRoomID;
 @property (copy, nonatomic, readwrite) NSString *fromRoomName;
 @property (copy, nonatomic, readwrite) NSString *fromSipNO;

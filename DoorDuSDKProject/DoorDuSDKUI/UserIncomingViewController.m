@@ -92,7 +92,7 @@
 
     //提示控件
     self.tips_layoutView.hidden = NO;
-    if (self.callType == 0) {
+    if (self.mediaCallType == kDoorDuMediaCallTypeAudio) {
         self.tipsLabel.text = NSLocalizedString(@"邀请你语音聊天", nil);
     }else {
         self.tipsLabel.text = NSLocalizedString(@"邀请你视频聊天", nil);
@@ -113,7 +113,7 @@
     self.videoPreview.hidden = YES;
     self.acceptMode_layoutView.hidden = NO;
     self.isHangUp = NO;
-    if (self.callType == 0) {
+    if (self.mediaCallType == kDoorDuMediaCallTypeAudio) {
         //语音模式默认开启麦克风和话筒
         self.isEnableMic = YES;
         self.isEnableSpeaker = YES;
@@ -204,7 +204,7 @@
         self.audioMode_layoutView.hidden = YES;
         self.videoMode_layoutView.hidden = YES;
 
-        DoorDuMediaCallType callType = (self.callType == 1) ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
+        DoorDuMediaCallType callType = (self.mediaCallType == kDoorDuMediaCallTypeAudio) ? kDoorDuMediaCallTypeAudio : kDoorDuMediaCallTypeVideo;
         DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
         
         [DoorDuClient answerCallWithCallType:kDoorDuCallEachFamilyAccess mediaCallType:callType localMicrophoneEnable:self.isEnableMic localSpeakerEnable:self.isEnableSpeaker localCameraOrientation:cameralOrientation remoteCallerID:self.fromSipNO localVideoView:self.videoPreview remoteVideoView:self.videoView];
@@ -413,7 +413,7 @@
     self.videoMode_switchCameraButton.enabled = NO;
     
     //获取来电类型
-    if (self.callType == 0) {
+    if (self.mediaCallType == kDoorDuMediaCallTypeUnknown) {
         
         //布局设置
         self.videoPreview.hidden = YES;
