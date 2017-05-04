@@ -61,7 +61,6 @@
             //IOS8，创建UIUserNotificationSettings，并设置消息的显示类类型
             [[UIApplication sharedApplication] registerForRemoteNotifications];
             UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-            
             [[UIApplication sharedApplication] registerUserNotificationSettings:notiSettings];
         }
     }
@@ -93,11 +92,13 @@
 #pragma mark- UNUserNotificationCenterDelegate
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
 {
+    
     completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
 {
+    
     completionHandler();
 }
 
