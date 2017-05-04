@@ -284,7 +284,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="拒绝挂断取消"/>
                                                 <connections>
-                                                    <action selector="hangUpButtonAction:" destination="76s-tn-TbF" eventType="touchUpInside" id="f9I-QD-iFL"/>
+                                                    <action selector="hangUpButtonAction:" destination="76s-tn-TbF" eventType="touchUpInside" id="yoO-Oy-szJ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9U-Wo-O9b">
@@ -358,7 +358,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="拒绝挂断取消"/>
                                                 <connections>
-                                                    <action selector="rejectButtonAction:" destination="76s-tn-TbF" eventType="touchUpInside" id="mZc-Tl-9mj"/>
+                                                    <action selector="hangUpButtonAction:" destination="76s-tn-TbF" eventType="touchUpInside" id="18S-lv-iqW"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="挂断" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4b-GU-rvL">
