@@ -25,6 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
+@property (weak, nonatomic) IBOutlet UIViewController *topViewContoller;
+
 @end
 
 @implementation DoorDuMainViewController
@@ -33,8 +35,6 @@
     DoorDuUserInfo *_userInfo;
     DoorDuDoorInfo *doorInfo;
     DoorDuUserRoom *room;
-    
-    UIViewController *topViewContoller;
 }
 
 - (void)viewDidLoad {
@@ -171,7 +171,7 @@
     
     [self presentViewController:videoChatVC animated:YES completion:nil];
     
-    topViewContoller = videoChatVC;
+    self.topViewContoller = videoChatVC;
 }
 
 #pragma mark --房间号呼叫
@@ -208,7 +208,7 @@
     
     [self presentViewController:userIncomingVC animated:YES completion:nil];
     
-    topViewContoller = userIncomingVC;
+    self.topViewContoller = userIncomingVC;
 }
 
 /**接收到门禁呼叫来电*/
@@ -230,7 +230,7 @@
     
     [self presentViewController:doorIncomingVC animated:YES completion:nil];
     
-    topViewContoller = doorIncomingVC;
+    self.topViewContoller = doorIncomingVC;
 }
 
 /**
@@ -241,7 +241,7 @@
  */
 - (void)callDidHangupMessage
 {
-    [topViewContoller dismissViewControllerAnimated:YES completion:nil];
+    [self.topViewContoller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,7 +18,7 @@
 
 #import "AppHelp.h"
 
-@interface DoorVideoChatViewController ()<DoorDuCallManagerDelegate>
+@interface DoorVideoChatViewController ()<DoorDuCallManagerDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic, readwrite)      IBOutlet UILabel *doorNameLabel;
 @property (weak, nonatomic, readwrite)      IBOutlet DoorDuVideoView *videoView;
@@ -154,6 +154,7 @@
 
 - (void)dismissSelf
 {
+    [DoorDuClient hangupCurrentCall];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -162,7 +163,6 @@
 - (IBAction)hangupAction:(id)sender {
     
     [DoorDuClient hangupCurrentCall];
-    
     [self dismissSelf];
 }
 
@@ -178,7 +178,7 @@
                                       completion:^(BOOL isSuccess, DoorDuError *error) {
                                           StrongSelf
                                           [strongSelf dismiss];
-                                          
+                                          [strongSelf dismissSelf];
                                           if (isSuccess) {
                                               [strongSelf showSuccessWithTitle:@"开门成功"];
                                           }else {
@@ -190,8 +190,45 @@
 
 #pragma mark -- 切换音视频模式
 - (IBAction)switchMedieModel:(id)sender {
-    [self.videoView removeFromSuperview];
-    [DoorDuClient switchVideoModeToAudioMode];
+    UIActionSheet *sheet = [[UIActionSheet alloc] init];
+    
+    if (self.isEnableMic) {
+        [sheet addButtonWithTitle:@"开启静音"];
+    }else {
+        [sheet addButtonWithTitle:@"关闭静音"];
+    }
+    
+    if (self.isEnableSpeaker) {
+        [sheet addButtonWithTitle:@"关闭免提"];
+    }else {
+        [sheet addButtonWithTitle:@"开启免提"];
+    }
+    
+    [sheet addButtonWithTitle:NSLocalizedString(@"取消", nil)];
+    [sheet setCancelButtonIndex:2];
+    [sheet setDelegate:self];
+    [sheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        
+        if (self.isEnableMic) {
+            self.isEnableMic = NO;
+        }else {
+            self.isEnableMic = YES;
+        }
+        [DoorDuClient switchMicrophone:self.isEnableMic];
+    }else if (buttonIndex == 1) {
+        if (self.isEnableSpeaker) {
+            self.isEnableSpeaker = NO;
+        }else {
+            self.isEnableSpeaker = YES;
+        }
+        [DoorDuClient switchSpeaker:self.isEnableSpeaker];
+        
+    }
 }
 
 #pragma mark -- DoorDuCallManagerDelegate
