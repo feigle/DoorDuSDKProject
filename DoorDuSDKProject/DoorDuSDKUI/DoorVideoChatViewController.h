@@ -5,10 +5,10 @@
 //  Created by Doordu on 2017/4/14.
 //  Copyright © 2017年 深圳市多度科技有限公司. All rights reserved.
 //
-//  呼叫门禁机
 
 #import "BaseViewController.h"
 
+/**呼叫门禁机*/
 @interface DoorVideoChatViewController : BaseViewController
 
 /**

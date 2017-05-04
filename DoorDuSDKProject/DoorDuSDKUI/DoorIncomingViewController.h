@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 
+/**门禁机打过来*/
 @interface DoorIncomingViewController : BaseViewController
 
 @property (copy, nonatomic, readwrite) NSString *transactionID;

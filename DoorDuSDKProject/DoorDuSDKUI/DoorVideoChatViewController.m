@@ -163,7 +163,7 @@
     
     [DoorDuClient hangupCurrentCall];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissSelf];
 }
 
 #pragma mark -- 开门
@@ -190,7 +190,7 @@
 
 #pragma mark -- 切换音视频模式
 - (IBAction)switchMedieModel:(id)sender {
-    
+    [self.videoView removeFromSuperview];
     [DoorDuClient switchVideoModeToAudioMode];
 }
 

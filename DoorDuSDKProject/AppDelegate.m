@@ -28,7 +28,13 @@
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         
     }];
-    
+    [self registerRemoteNotification];
+
+    return YES;
+}
+
+- (void)registerRemoteNotification
+{
     // 注册通知
     //iOS 10
     if ([[[UIDevice currentDevice]systemVersion] floatValue] >= 10.0) {
@@ -45,32 +51,54 @@
                 NSLog(@"注册通知失败");
             }
         }];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        center.delegate = self;
         [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
             NSLog(@"%@",settings);
         }];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     }else{
-        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
             //IOS8，创建UIUserNotificationSettings，并设置消息的显示类类型
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
             UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
             
-            [application registerUserNotificationSettings:notiSettings];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:notiSettings];
         }
     }
-
-    return YES;
 }
 
 #pragma mark -- 注册通知成功回调
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+    NSLog(@"获取deviceToken成功：%@",deviceToken);
     [DoorDuDataManager registerDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"获取deviceToken失败：%@",error);
+}
+
+//收到远程推送消息
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+//收到本地推送消息
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    
+}
+/***********iOS10 推送数据处理***********/
+#pragma mark- UNUserNotificationCenterDelegate
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
+{
+    completionHandler();
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

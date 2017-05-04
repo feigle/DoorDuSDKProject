@@ -374,6 +374,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     self.currentSipAccount = nil;
     self.callDirection = kDoorDuCallDirectionNone;
     [self removeCTCallCenterMonitoring];
+    [self clearVideoUI];
     //停止视频状态监听
     if (call->support_video()) {
         [[SipEngineManager sharedInstance] setVideoFrameInfoDelegate:nil];
@@ -392,6 +393,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     self.currentSipAccount = nil;
     self.callDirection = kDoorDuCallDirectionNone;
     [self removeCTCallCenterMonitoring];
+    [self clearVideoUI];
     //停止视频状态监听
     if (call->support_video()) {
         [[SipEngineManager sharedInstance] setVideoFrameInfoDelegate:nil];
@@ -411,6 +413,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     self.currentSipAccount = nil;
     self.callDirection = kDoorDuCallDirectionNone;
     [self removeCTCallCenterMonitoring];
+    [self clearVideoUI];
     //停止视频状态监听
     if (call->support_video()) {
         [[SipEngineManager sharedInstance] setVideoFrameInfoDelegate:nil];
@@ -525,6 +528,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 - (void)OnCallReferRejected:(client::Call *)call
 {
     DoorDuLogDebug(@"音视频--呼叫转移被拒绝");
+    [self clearVideoUI];
     if ([self.deleagte respondsToSelector:@selector(sipCallForwardingIsRejectedDirection:)]) {
         [self.deleagte sipCallForwardingIsRejectedDirection:self.callDirection];
     }
@@ -766,7 +770,6 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
                                       , fps);
         //设置媒体流为"双向收发"
         videoStream->SetMediaDirection(client::StreamParams::kSendRecv);
-        
         //改变视频尺寸
         [DoorDuSipCallManager changeLocalRemoteVideoSize];
     }
@@ -774,9 +777,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 /**布局video界面*/
 + (void)configVideoUI
 {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        [[DoorDuSipCallManager sharedInstance] configVideoUI];
-//    });    
+    [[DoorDuSipCallManager sharedInstance] configVideoUI];
 }
 /**布局video界面-对象方法*/
 - (void)configVideoUI
@@ -860,9 +861,7 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 /**清除视频渲染控件*/
 + (void)clearVideoUI
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[DoorDuSipCallManager sharedInstance] clearVideoUI];
-    });
+    [[DoorDuSipCallManager sharedInstance] clearVideoUI];
 }
 /**清除视频渲染控件-对象方法*/
 - (void)clearVideoUI
@@ -949,46 +948,48 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     if ([[SipEngineManager sharedInstance] inCalling]) {//检查是否正在通话
         return;
     }
-    
-    [DoorDuSipCallManager sharedInstance].localCameraOrientation = localCameraOrientation;
-    [DoorDuSipCallManager sharedInstance].microphoneEnable = localMicrophoneEnable;
-    [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
-    [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
-    [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
-    [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
-    [DoorDuSipCallManager configVideoUI];
-    //获取SIP管理器配置SIP属性
-    client::SipProfile *profile = [[SipEngineManager sharedInstance] gainCurrentSipProfile];
-    if (profile) {
-        //获取呼叫管理器
-        client::CallManager *callManager = [[SipEngineManager sharedInstance] gainCallManager];
-        //添加自定义键值对
-        /*!
-         * key前面带"X-key"，对应的value会传给远程;
-         * key前面不带"X-key"，对应的value只会传给自己;
-         */
-        client::ExtensionHeaderMap extension_hdr_map;
-        NSString *targetSipNO = @" ";
-        if (callType == kDoorDuCallEachFamilyAccess) {
-            targetSipNO = [NSString stringWithFormat:@"loop%@", remoteCallerID];
-        } else if (callType == kDoorDuCallDoor){
-            targetSipNO = [NSString stringWithFormat:@"*%@", remoteCallerID];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [DoorDuSipCallManager clearVideoUI];
+        [DoorDuSipCallManager sharedInstance].localCameraOrientation = localCameraOrientation;
+        [DoorDuSipCallManager sharedInstance].microphoneEnable = localMicrophoneEnable;
+        [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
+        [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
+        [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
+        [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
+        [DoorDuSipCallManager configVideoUI];
+        //获取SIP管理器配置SIP属性
+        client::SipProfile *profile = [[SipEngineManager sharedInstance] gainCurrentSipProfile];
+        if (profile) {
+            //获取呼叫管理器
+            client::CallManager *callManager = [[SipEngineManager sharedInstance] gainCallManager];
+            //添加自定义键值对
+            /*!
+             * key前面带"X-key"，对应的value会传给远程;
+             * key前面不带"X-key"，对应的value只会传给自己;
+             */
+            client::ExtensionHeaderMap extension_hdr_map;
+            NSString *targetSipNO = @" ";
+            if (callType == kDoorDuCallEachFamilyAccess) {
+                targetSipNO = [NSString stringWithFormat:@"loop%@", remoteCallerID];
+            } else if (callType == kDoorDuCallDoor){
+                targetSipNO = [NSString stringWithFormat:@"*%@", remoteCallerID];
+            }
+            //呼叫类型(语音/视频)
+            BOOL enableVideo = YES;
+            if (mediaCallType == kDoorDuMediaCallTypeAudio) {
+                enableVideo = NO;
+            }
+            //呼叫
+            callManager->MakeCall(profile
+                                  , [targetSipNO UTF8String]
+                                  , "ios-app"
+                                  , profile->webrtc_mode
+                                  , true
+                                  , enableVideo
+                                  , false
+                                  , extension_hdr_map);
         }
-        //呼叫类型(语音/视频)
-        BOOL enableVideo = YES;
-        if (mediaCallType == kDoorDuMediaCallTypeAudio) {
-            enableVideo = NO;
-        }
-        //呼叫
-        callManager->MakeCall(profile
-                              , [targetSipNO UTF8String]
-                              , "ios-app"
-                              , profile->webrtc_mode
-                              , true
-                              , enableVideo
-                              , false
-                              , extension_hdr_map);
-    }
+    });
 }
 /**接听SIP电话*/
 + (void)answerSipCallWithMediaCallType:(DoorDuMediaCallType)mediaCallType
@@ -1005,19 +1006,21 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     if ([[SipEngineManager sharedInstance] inCalling]) {//检查是否正在通话
         return;
     }
-//    [DoorDuSipCallManager clearVideoUI];
-    [DoorDuSipCallManager sharedInstance].localCameraOrientation = localCameraOrientation;
-    [DoorDuSipCallManager sharedInstance].microphoneEnable = localMicrophoneEnable;
-    [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
-    [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
-    [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
-    [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
-    [DoorDuSipCallManager configVideoUI];
-    if (mediaCallType == kDoorDuMediaCallTypeVideo) {//本地视频是否开启
-        [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:YES];
-    } else {
-        [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:NO];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [DoorDuSipCallManager clearVideoUI];
+        [DoorDuSipCallManager sharedInstance].localCameraOrientation = localCameraOrientation;
+        [DoorDuSipCallManager sharedInstance].microphoneEnable = localMicrophoneEnable;
+        [DoorDuSipCallManager sharedInstance].speakerEnable = localMicrophoneEnable;
+        [DoorDuSipCallManager sharedInstance].localVideoBgView = localVideoView;
+        [DoorDuSipCallManager sharedInstance].remoteVideoBgView = remoteVideoView;
+        [DoorDuSipCallManager sharedInstance].localMediaCallType = mediaCallType;
+        [DoorDuSipCallManager configVideoUI];
+        if (mediaCallType == kDoorDuMediaCallTypeVideo) {//本地视频是否开启
+            [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:YES];
+        } else {
+            [[SipEngineManager sharedInstance] answerIncomingCall:YES enableVideo:NO];
+        }
+    });
 }
 /**退出、注销当前账号*/
 + (void)logoutSipAccount
@@ -1299,6 +1302,9 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
 + (BOOL)switchVideoModeToAudioMode
 {
     if ([DoorDuSipCallManager sharedInstance] ->_currentCall) {
+        if ([DoorDuSipCallManager sharedInstance].localMediaCallType == kDoorDuMediaCallTypeAudio) {
+            return NO;
+        }
         //向远程发送视频切换语音信令(发送dtmf一定要在UpdateCall前面发送，UpdateCall没有完成之前获取通话状态为false)
         [DoorDuSipCallManager sendDTMFWithCode:DTMF_SWITCH_VIDEO_TO_AUDIO];
         //关闭视频，只接收模式(不会更新信令)

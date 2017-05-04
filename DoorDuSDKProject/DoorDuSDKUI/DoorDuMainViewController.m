@@ -154,7 +154,7 @@
 }
 
 
-#pragma mark --门禁机呼叫
+#pragma mark --呼叫门禁机
 - (IBAction)doorCall:(id)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
