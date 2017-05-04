@@ -236,7 +236,7 @@
                                       completion:^(BOOL isSuccess, DoorDuError *error) {
                                           StrongSelf
                                           [strongSelf dismiss];
-                                          
+                                          [strongSelf dismissSelf];
                                           if (isSuccess) {
                                               [strongSelf showSuccessWithTitle:@"开门成功"];
                                           }else {

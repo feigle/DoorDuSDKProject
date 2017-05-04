@@ -224,7 +224,7 @@
     
     self.isHangUp = YES;
     [DoorDuClient hangupCurrentCall];
-    [self showWithTitle:@"通话结束"];
+    [self showSuccessWithTitle:@"通话结束"];
     [self dismissSelf];
 }
 
@@ -264,7 +264,7 @@
 #pragma mark (切换语音按钮动作)
 - (IBAction)switchAudioButtonAction:(id)sender {
     
-    [self showWithTitle:@"已切到语音聊天"];
+    [self showSuccessWithTitle:@"已切到语音聊天"];
     
     //切换语音模式
     [DoorDuClient switchVideoModeToAudioMode];
@@ -413,17 +413,20 @@
     self.videoMode_switchCameraButton.enabled = NO;
     
     //获取来电类型
-    if (self.mediaCallType == kDoorDuMediaCallTypeUnknown) {
+    if (self.mediaCallType == kDoorDuMediaCallTypeAudio) {
         
-        //布局设置
         self.videoPreview.hidden = YES;
         self.tips_layoutView.hidden = NO;
+        
         self.acceptMode_layoutView.hidden = YES;
+        self.waitMode_layoutView.hidden = YES;
         self.audioMode_layoutView.hidden = NO;
         self.videoMode_layoutView.hidden = YES;
         
-        //开启计时
-        [self startTimer];
+        self.audioMode_micButton.enabled = NO;
+        self.audioMode_speakerButton.enabled = NO;
+        self.videoMode_switchAudioButton.enabled = NO;
+        self.videoMode_switchCameraButton.enabled = NO;
         
         //提示语
         if (!self.isEnableSpeaker) {
@@ -435,13 +438,20 @@
         //布局设置
         self.videoPreview.hidden = NO;
         self.tips_layoutView.hidden = YES;
+        
         self.acceptMode_layoutView.hidden = YES;
+        self.waitMode_layoutView.hidden = YES;
         self.audioMode_layoutView.hidden = YES;
         self.videoMode_layoutView.hidden = NO;
-        
-        //开启计时
-        [self startTimer];
     }
+    //开启计时
+    [self startTimer];
+    
+    //配置控件
+    self.audioMode_micButton.enabled = YES;
+    self.audioMode_speakerButton.enabled = YES;
+    self.videoMode_switchAudioButton.enabled = YES;
+    self.videoMode_switchCameraButton.enabled = YES;
     
 //    //接听来电
 //    DoorDuMediaCallType callType = (self.callType == 1) ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;

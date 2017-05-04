@@ -258,7 +258,7 @@
 #pragma mark (切换语音按钮动作)
 - (IBAction)switchAudioButtonAction:(id)sender {
     
-    [self showWithTitle:@"已切到语音聊天"];
+    [self showSuccessWithTitle:@"已切到语音聊天"];
     
     //切换语音模式
     self.isVideoMode = NO;
@@ -417,9 +417,6 @@
         self.audioMode_layoutView.hidden = NO;
         self.videoMode_layoutView.hidden = YES;
         
-        //开启计时
-        [self startTimer];
-        
         //提示语
         if (!self.isEnableSpeaker) {
             self.tipsLabel.text = @"请使用听筒接听";
@@ -434,10 +431,15 @@
         self.audioMode_layoutView.hidden = YES;
         self.videoMode_layoutView.hidden = NO;
         
-        //开启计时
-        [self startTimer];
     }
-        
+    
+    //配置控件
+    self.audioMode_micButton.enabled = YES;
+    self.audioMode_speakerButton.enabled = YES;
+    self.videoMode_switchAudioButton.enabled = YES;
+    self.videoMode_switchCameraButton.enabled = YES;
+    //开启计时
+    [self startTimer];
 //    //接听来电
 //    DoorDuMediaCallType callType = self.isVideoMode ? kDoorDuMediaCallTypeVideo : kDoorDuMediaCallTypeAudio;
 //    DoorDuCallCameraOrientation cameralOrientation = (self.isFontCamera ? kDoorDuCallCameraOrientationFront : kDoorDuCallCameraOrientationBack);
