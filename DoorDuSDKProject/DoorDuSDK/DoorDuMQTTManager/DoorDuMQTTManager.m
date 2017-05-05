@@ -332,15 +332,17 @@ static DoorDuMQTTManager *mqttInstance = nil;
 //            [mqttInstance.session subscribeToTopic:topic atLevel:DoorDuMQTTQosLevelExactlyOnce];
 //        }
         
-        NSMutableDictionary *topics = [NSMutableDictionary dictionary];
-        for (NSString *topic in mqttInstance.topics) {
-            [topics setObject:@"2" forKey:topic];
-        }
-        [mqttInstance.session subscribeToTopics:topics subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
-            if (!error) {
-                DoorDuLog(@"mqtt 订阅主题成功!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableDictionary *topics = [NSMutableDictionary dictionary];
+            for (NSString *topic in mqttInstance.topics) {
+                [topics setObject:@"2" forKey:topic];
             }
-        }];
+            [mqttInstance.session subscribeToTopics:topics subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
+                if (!error) {
+                    DoorDuLog(@"mqtt 订阅主题成功!");
+                }
+            }];
+        });
     }
     
     if ([mqttInstance.delegate respondsToSelector:@selector(mqttConnectedSuccess)]) {
