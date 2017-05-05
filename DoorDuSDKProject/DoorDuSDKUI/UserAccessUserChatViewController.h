@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "DoorDuClient.h"
 
+/**户户通拨号界面之后拨打界面*/
 @interface UserAccessUserChatViewController : BaseViewController
 
 @property (assign, nonatomic, readwrite) DoorDuMediaCallType type;
