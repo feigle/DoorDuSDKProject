@@ -237,6 +237,7 @@ static DoorDuClient * doorDuClient = nil;
 #pragma mark - /**拒接来电*/
 + (void)rejectCurrentCall
 {
+    [[self class] __endCallTimeOutTimer];
     [DoorDuSipCallManager rejectCurrentCall];
 }
 #pragma mark - /**挂断当前呼叫*/
@@ -370,6 +371,7 @@ static DoorDuClient * doorDuClient = nil;
             [DoorDuMQTTManager publishCallConnected:[DoorDuSipCallManager getUserSipAccount] roomID:self.receiveCallToRoomID transactionID:[DoorDuMqttMessageHandle sharedInstance].transcationID];
         }
     }
+    [[self class] __endCallTimeOutTimer];
     if ([self.callManagerDelegate respondsToSelector:@selector(callDidTheCallIsConnectedSupportVideo:supportData:)]) {
         [self.callManagerDelegate callDidTheCallIsConnectedSupportVideo:supportVideo supportData:supportData];
     }
@@ -586,6 +588,18 @@ static DoorDuClient * doorDuClient = nil;
     }
     _callTimeOutTimer = [NSTimer scheduledTimerWithTimeInterval:self.callOutTimerNumber target:self selector:@selector(__callTimeOutEnd) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:_callTimeOutTimer forMode:NSRunLoopCommonModes];
+}
+/**取消定时器*/
++ (void)__endCallTimeOutTimer
+{
+    [[DoorDuClient sharedInstance] __endCallTimeOutTimer];
+}
+- (void)__endCallTimeOutTimer
+{
+    if (_callTimeOutTimer) {
+        [_callTimeOutTimer invalidate];
+        _callTimeOutTimer = nil;
+    }
 }
 /**呼叫超时*/
 - (void)__callTimeOutEnd
