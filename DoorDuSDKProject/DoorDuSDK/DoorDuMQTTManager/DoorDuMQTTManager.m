@@ -294,7 +294,7 @@ static DoorDuMQTTManager *mqttInstance = nil;
 
 // 用于当通话建立之后，主叫方调用此接口发布一个连接消息
 + (void)publishCallConnected:(NSString *)sipAccount
-                      roomID:(NSString *)roomID
+                      roomID:(NSNumber *)roomID
                transactionID:(NSString *)transactionID
 {
     [DoorDuMQTTManager publishCallEnd:sipAccount roomID:roomID transactionID:transactionID];
