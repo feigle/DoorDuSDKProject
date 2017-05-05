@@ -89,7 +89,7 @@
  * @param       transactionID    回话ID
  */
 + (void)publishCallEnd:(NSString *)sipAccount
-                roomID:(NSString *)roomID
+                roomID:(NSNumber *)roomID
       transactionID:(NSString *)transactionID;
 
 /*! @brief DoorDuMQTTManager类方法， 用于当通话建立之后，主叫方调用此接口发布一个连接消息

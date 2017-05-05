@@ -1077,7 +1077,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="拒绝挂断取消"/>
                                                 <connections>
-                                                    <action selector="rejectButtonAction:" destination="2aI-IZ-JTd" eventType="touchUpInside" id="Jry-pL-EdR"/>
+                                                    <action selector="hangUpButtonAction:" destination="2aI-IZ-JTd" eventType="touchUpInside" id="V4R-TX-LFX"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="取消" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tl-58-1ln">

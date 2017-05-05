@@ -275,7 +275,7 @@
  *  被呼叫房号的roomID
  */
 #warning 服务端缺少这个参数，后期调试的时候需要加上，加上的时候把这里警告删了
-@property (nonatomic,copy) NSString *toRoomId;
+@property (nonatomic,copy) NSNumber *toRoomId;
 
 @end
 

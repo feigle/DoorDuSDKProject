@@ -261,14 +261,14 @@ static DoorDuMQTTManager *mqttInstance = nil;
 
 #pragma mark (发布通话结束)
 + (void)publishCallEnd:(NSString *)sipAccount
-                roomID:(NSString *)roomID
+                roomID:(NSNumber *)roomID
       transactionID:(NSString *)transactionID {
     
     if (!sipAccount) {
         sipAccount = @"";
     }
     
-    if (!roomID || [roomID isEqualToString:@""]) {
+    if (!roomID) {
         return;
     }
     

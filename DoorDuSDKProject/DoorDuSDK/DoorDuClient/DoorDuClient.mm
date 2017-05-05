@@ -243,7 +243,6 @@ static DoorDuClient * doorDuClient = nil;
 #pragma mark - /**挂断当前呼叫*/
 + (void)hangupCurrentCall
 {
-    [self __clearDoorDuClientCallData];
     if ([self isExistCall]) {/**判断当前是否在通话中，如果在通话中就挂断电话，如果没有接通就发送MQTT消息，主叫方挂断了消息，其他接听了也要挂断了*/
         [DoorDuSipCallManager hangupCurrentCall];
     } else {/**发送MQTT消息，发送挂断通知*/
@@ -251,6 +250,8 @@ static DoorDuClient * doorDuClient = nil;
             [DoorDuMQTTManager publishCallEnd:@"" roomID:[DoorDuClient sharedInstance].doorDuCallModel.toRoomId transactionID:[DoorDuClient sharedInstance].doorDuCallModel.transactionId];
         }
     }
+    
+    [self __clearDoorDuClientCallData];
 }
 
 /**切换话筒状态,enable为YES打开话筒、为NO关闭话筒*/
