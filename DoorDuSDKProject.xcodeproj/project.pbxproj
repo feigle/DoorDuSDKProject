@@ -67,14 +67,14 @@
 		6AB4AC1F1E8B830B00744989 /* DoorDuBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC171E8B830B00744989 /* DoorDuBase64.m */; };
 		6AB4AC201E8B830B00744989 /* DoorDuCommonTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC1A1E8B830B00744989 /* DoorDuCommonTypes.m */; };
 		6AB4AC211E8B830B00744989 /* DoorDuVideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC1D1E8B830B00744989 /* DoorDuVideoView.mm */; };
-		6AB4AC261E8B83CB00744989 /* DoorDuAllResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC231E8B83CB00744989 /* DoorDuAllResponse.m */; };
-		6AB4AC271E8B83CB00744989 /* DoorDuBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC251E8B83CB00744989 /* DoorDuBaseResponse.m */; };
 		6AB4AC311E8B87C300744989 /* DoorDuMqttMessageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC2E1E8B87C300744989 /* DoorDuMqttMessageHandle.m */; };
 		6AB4AC321E8B87C300744989 /* DoorDuProxyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC301E8B87C300744989 /* DoorDuProxyInfo.m */; };
 		6AB4AC351E8B92D300744989 /* DoorDuDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC341E8B92D300744989 /* DoorDuDataManager.m */; };
 		6AB4AC381E8B936000744989 /* DoorDuAllRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4AC371E8B936000744989 /* DoorDuAllRequestParam.m */; };
 		724008C91E9F2DC400DA7F17 /* DoorDuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724008C81E9F2DC400DA7F17 /* DoorDuMainViewController.m */; };
 		724008CD1E9F495200DA7F17 /* UIView+DoorDuSDKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 724008CC1E9F495200DA7F17 /* UIView+DoorDuSDKAutoLayout.m */; };
+		724C22B81EBC6A39000A4883 /* DoorDuAllResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 724C22B51EBC6A39000A4883 /* DoorDuAllResponse.m */; };
+		724C22B91EBC6A39000A4883 /* DoorDuBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 724C22B71EBC6A39000A4883 /* DoorDuBaseResponse.m */; };
 		727F07981E8CB7D20044CAF3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727F07971E8CB7D20044CAF3 /* CoreTelephony.framework */; };
 		727F07B51E8CDA910044CAF3 /* DoorDuClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 727F07B01E8CDA910044CAF3 /* DoorDuClient.mm */; };
 		727F07B61E8CDA910044CAF3 /* DoorDuClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 727F07B21E8CDA910044CAF3 /* DoorDuClientDelegate.m */; };
@@ -221,10 +221,6 @@
 		6AB4AC1A1E8B830B00744989 /* DoorDuCommonTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuCommonTypes.m; sourceTree = "<group>"; };
 		6AB4AC1C1E8B830B00744989 /* DoorDuVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuVideoView.h; sourceTree = "<group>"; };
 		6AB4AC1D1E8B830B00744989 /* DoorDuVideoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoorDuVideoView.mm; sourceTree = "<group>"; };
-		6AB4AC221E8B83CB00744989 /* DoorDuAllResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorDuAllResponse.h; path = DoorDuSDKProject/DoorDuSDK/DoorDuDataManager/DoorDuNetServer/DoorDuResponse/DoorDuAllResponse.h; sourceTree = SOURCE_ROOT; };
-		6AB4AC231E8B83CB00744989 /* DoorDuAllResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorDuAllResponse.m; path = DoorDuSDKProject/DoorDuSDK/DoorDuDataManager/DoorDuNetServer/DoorDuResponse/DoorDuAllResponse.m; sourceTree = SOURCE_ROOT; };
-		6AB4AC241E8B83CB00744989 /* DoorDuBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorDuBaseResponse.h; path = DoorDuSDKProject/DoorDuSDK/DoorDuDataManager/DoorDuNetServer/DoorDuResponse/DoorDuBaseResponse.h; sourceTree = SOURCE_ROOT; };
-		6AB4AC251E8B83CB00744989 /* DoorDuBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorDuBaseResponse.m; path = DoorDuSDKProject/DoorDuSDK/DoorDuDataManager/DoorDuNetServer/DoorDuResponse/DoorDuBaseResponse.m; sourceTree = SOURCE_ROOT; };
 		6AB4AC2D1E8B87C300744989 /* DoorDuMqttMessageHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuMqttMessageHandle.h; sourceTree = "<group>"; };
 		6AB4AC2E1E8B87C300744989 /* DoorDuMqttMessageHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuMqttMessageHandle.m; sourceTree = "<group>"; };
 		6AB4AC2F1E8B87C300744989 /* DoorDuProxyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuProxyInfo.h; sourceTree = "<group>"; };
@@ -238,6 +234,10 @@
 		724008C81E9F2DC400DA7F17 /* DoorDuMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuMainViewController.m; sourceTree = "<group>"; };
 		724008CB1E9F495200DA7F17 /* UIView+DoorDuSDKAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DoorDuSDKAutoLayout.h"; sourceTree = "<group>"; };
 		724008CC1E9F495200DA7F17 /* UIView+DoorDuSDKAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DoorDuSDKAutoLayout.m"; sourceTree = "<group>"; };
+		724C22B41EBC6A39000A4883 /* DoorDuAllResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuAllResponse.h; sourceTree = "<group>"; };
+		724C22B51EBC6A39000A4883 /* DoorDuAllResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuAllResponse.m; sourceTree = "<group>"; };
+		724C22B61EBC6A39000A4883 /* DoorDuBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuBaseResponse.h; sourceTree = "<group>"; };
+		724C22B71EBC6A39000A4883 /* DoorDuBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorDuBaseResponse.m; sourceTree = "<group>"; };
 		725F5A451EB981DC0047C88E /* DoorDuSDKProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoorDuSDKProject.entitlements; sourceTree = "<group>"; };
 		727788781E8F57F300FA49D3 /* DoorDuClientEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorDuClientEnum.h; sourceTree = "<group>"; };
 		727F07971E8CB7D20044CAF3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -329,10 +329,10 @@
 		6A42AEE21E8B5773009FE7F5 /* DoorDuBaseResponse */ = {
 			isa = PBXGroup;
 			children = (
-				6AB4AC221E8B83CB00744989 /* DoorDuAllResponse.h */,
-				6AB4AC231E8B83CB00744989 /* DoorDuAllResponse.m */,
-				6AB4AC241E8B83CB00744989 /* DoorDuBaseResponse.h */,
-				6AB4AC251E8B83CB00744989 /* DoorDuBaseResponse.m */,
+				724C22B41EBC6A39000A4883 /* DoorDuAllResponse.h */,
+				724C22B51EBC6A39000A4883 /* DoorDuAllResponse.m */,
+				724C22B61EBC6A39000A4883 /* DoorDuBaseResponse.h */,
+				724C22B71EBC6A39000A4883 /* DoorDuBaseResponse.m */,
 			);
 			path = DoorDuBaseResponse;
 			sourceTree = "<group>";
@@ -837,7 +837,6 @@
 			files = (
 				6A5B7C7F1EA4C2CD0024C1A4 /* UIImage+scale.m in Sources */,
 				6A42AF3B1E8B5773009FE7F5 /* DoorDuAFNetworkReachabilityManager.m in Sources */,
-				6AB4AC261E8B83CB00744989 /* DoorDuAllResponse.m in Sources */,
 				6A4A51681EA06C6600741F90 /* DoorVideoChatViewController.m in Sources */,
 				6A42AF4E1E8B5773009FE7F5 /* DoorDuMQTTSSLSecurityPolicyTransport.m in Sources */,
 				6AB4AC311E8B87C300744989 /* DoorDuMqttMessageHandle.m in Sources */,
@@ -881,7 +880,6 @@
 				6A42AF471E8B5773009FE7F5 /* DoorDuMQTTCFSocketDecoder.m in Sources */,
 				6A42AF351E8B5773009FE7F5 /* DoorDuBaseRequestParam.m in Sources */,
 				6A42AF481E8B5773009FE7F5 /* DoorDuMQTTCFSocketEncoder.m in Sources */,
-				6AB4AC271E8B83CB00744989 /* DoorDuBaseResponse.m in Sources */,
 				6A42AF451E8B5773009FE7F5 /* DoorDuMQTTSessionManager.m in Sources */,
 				6AB4AC0F1E8B82F800744989 /* SipEngineEventObserver.mm in Sources */,
 				6A42AF4B1E8B5773009FE7F5 /* DoorDuMQTTSSLSecurityPolicy.m in Sources */,
@@ -898,12 +896,14 @@
 				6A42AF3A1E8B5773009FE7F5 /* DoorDuAFHTTPSessionManager.m in Sources */,
 				6AB4AC1F1E8B830B00744989 /* DoorDuBase64.m in Sources */,
 				6A42AF441E8B5773009FE7F5 /* DoorDuMQTTSessionSynchron.m in Sources */,
+				724C22B91EBC6A39000A4883 /* DoorDuBaseResponse.m in Sources */,
 				6A42AF3D1E8B5773009FE7F5 /* DoorDuAFURLRequestSerialization.m in Sources */,
 				724008C91E9F2DC400DA7F17 /* DoorDuMainViewController.m in Sources */,
 				6A42AF4C1E8B5773009FE7F5 /* DoorDuMQTTSSLSecurityPolicyDecoder.m in Sources */,
 				6A63A6001EAF4EEF00BCD0C8 /* NSObject+YYModel.m in Sources */,
 				6A22D7E71E9CAF7000ED3635 /* DoorDuDoorCallModel.m in Sources */,
 				6A9961791E8A37CF000AB812 /* main.m in Sources */,
+				724C22B81EBC6A39000A4883 /* DoorDuAllResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
