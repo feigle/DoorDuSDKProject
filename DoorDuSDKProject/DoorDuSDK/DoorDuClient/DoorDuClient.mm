@@ -320,6 +320,7 @@ static DoorDuClient * doorDuClient = nil;
 /**Sip呼叫被取消(呼入/呼出)，callDirection   呼叫方向.*/
 - (void)sipTheCallIsCanceledDirection:(DoorDuCallDirection)callDirection
 {
+    [[self class] __endCallTimeOutTimer];
     [[self class] __clearDoorDuClientCallData];
     if ([self.callManagerDelegate respondsToSelector:@selector(callDidTheCallIsCanceled)]) {
         [self.callManagerDelegate callDidTheCallIsCanceled];
@@ -328,6 +329,7 @@ static DoorDuClient * doorDuClient = nil;
 /**Sip呼叫失败或错误（呼入/呼出）*/
 - (void)sipCallFailedOrWrong
 {
+    [[self class] __endCallTimeOutTimer];
     [[self class] __clearDoorDuClientCallData];
     if ([self.callManagerDelegate respondsToSelector:@selector(callDidCallFailedOrWrong)]) {
         [self.callManagerDelegate callDidCallFailedOrWrong];
@@ -336,6 +338,7 @@ static DoorDuClient * doorDuClient = nil;
 /**Sip呼叫被拒接*/
 - (void)sipTheCallWasRejected
 {
+    [[self class] __endCallTimeOutTimer];
     [[self class] __clearDoorDuClientCallData];
     if ([self.callManagerDelegate respondsToSelector:@selector(callDidTheCallWasRejected)]) {
         [self.callManagerDelegate callDidTheCallWasRejected];

@@ -97,8 +97,8 @@
 - (IBAction)getUserInfo:(id)sender {
     
     WeakSelf
-    [self show];//18588234262  13410010212
-    [DoorDuDataManager getUserInfoWithMobileNo:@"13410010212"
+    [self show];//18588234262  13410010212  17051001963
+    [DoorDuDataManager getUserInfoWithMobileNo:@"17051001963"
                                     nationCode:@"86"
                                     deviceUUID:[[[UIDevice currentDevice] identifierForVendor] UUIDString]
                                     completion:^(DoorDuUserInfo *userInfo, DoorDuError *error) {
