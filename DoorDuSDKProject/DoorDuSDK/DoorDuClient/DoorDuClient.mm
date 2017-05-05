@@ -172,7 +172,6 @@ static DoorDuClient * doorDuClient = nil;
                   fromRoomID:(NSString *)fromRoomID
                     toRoomNo:(NSString *)toRoomNO
 {
-    [self __clearDoorDuClientCallData];
     [DoorDuClient sharedInstance].makeCallType = callType;
     if (callType == kDoorDuCallEachFamilyAccess) {
         [DoorDuClient sharedInstance].isHTTPMakeCallOther = YES;
@@ -215,7 +214,6 @@ static DoorDuClient * doorDuClient = nil;
                 localVideoView:(DoorDuVideoView *)localVideoView
                remoteVideoView:(DoorDuVideoView *)remoteVideoView
 {
-    [self __clearDoorDuClientCallData];
     [DoorDuClient sharedInstance].makeCallType = callType;
     /**这里接通其实是反打过去SIP，这接通成功的时候发送一个MQTT消息（sipTheCallIsConnectedDirection:），告诉其他想接通的人我这里已经接通了，你们可以挂断了，这里过滤掉自己挂断，因为这时自己也会收到这个MQTT推送订阅*/
     /**这里的接听其实是SIP反呼叫过去，*/
