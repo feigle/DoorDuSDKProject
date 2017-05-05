@@ -106,6 +106,7 @@
 + (NSString *)getCurrentSipAccount;
 /**获取登录者的SIP账号*/
 + (NSString *)getUserSipAccount;
++ (DoorDuCallStatus)currentCallStatus;
 /**是否正在通话中*/
 + (BOOL)isCalling;
 /**是否存在通话*/

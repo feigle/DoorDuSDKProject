@@ -102,6 +102,26 @@ typedef NS_ENUM(NSInteger, DoorDuCallType) {
     kDoorDuCallDoor = 1,  /*呼叫门禁*/
 };
 
+typedef NS_ENUM(NSInteger, DoorDuCallStatus) {
+    kDoorDuUnkown  = -1,
+    kDoorDuNewCall = 0,  /**< 新呼叫*/
+    kDoorDuCancel,       /**< 呼叫被取消*/
+    kDoorDuFailed,       /**< 失败或错误*/
+    kDoorDuRejected,     /**< 呼叫被拒绝*/
+    kDoorDuEarlyMedia,   /**< 收到彩铃*/
+    kDoorDuRinging,      /**< 对方振铃*/
+    kDoorDuAnswered,     /**< 呼叫接通*/
+    kDoorDuHangup,       /**< 呼叫结束*/
+    kDoorDuPausing,      /**< 设置保持*/
+    kDoorDuPaused,       /**< 呼叫被保持*/
+    kDoorDuResuming,     /**< 设置恢复*/
+    kDoorDuResumed,      /**< 呼叫保持解除*/
+    kDoorDuUpdating,     /**< 设置更新*/
+    kDoorDuUpdated,      /**< 呼叫更新*/
+    kDoorDuReferAccepted,/**< 呼叫转移被接受*/
+    kDoorDuReferRejected,/**< 呼叫转移被拒绝*/
+};
+
 /**
     当前来电类型
  */

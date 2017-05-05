@@ -1047,6 +1047,14 @@ static DoorDuSipCallManager * doorDuSipCallManager = nil;
     return [DoorDuSipCallManager sharedInstance].userSipAccount;
 }
 
++ (DoorDuCallStatus)currentCallStatus
+{
+    if ([DoorDuSipCallManager sharedInstance]->_currentCall == nil) {
+        return kDoorDuUnkown;
+    }
+    return (DoorDuCallStatus)[DoorDuSipCallManager sharedInstance]->_currentCall->call_state();
+}
+
 /**是否正在通话中*/
 + (BOOL)isCalling
 {

@@ -545,12 +545,16 @@ static DoorDuClient * doorDuClient = nil;
 /*挂断推送消息*/
 - (void)hangupMessage
 {/**DoorDuMQTTManager里面处理了过滤自己发送的挂断消息*/
-    if (![[self class] isExistCall]) {/**不存在通话的情况下回调*/
+    if (![[self class] isExistCall] || [DoorDuSipCallManager currentCallStatus] != kDoorDuAnswered) {/**不存在通话的情况下回调*/
         DoorDuLogDebug(@"远程推送-收到挂断通知");
         if ([self.clientDelegate respondsToSelector:@selector(callDidHangupMessage)]) {
             [self.clientDelegate callDidHangupMessage];
         }
         [[self class] __clearDoorDuClientCallData];
+        
+        if ([DoorDuSipCallManager currentCallStatus] != kDoorDuAnswered) {
+            [[self class] hangupCurrentCall];
+        }
     }
 }
 /*****************以上是  DoorDuMQTTDelegate《接收DoorDuMQTTDelegate代理》 *****************/
