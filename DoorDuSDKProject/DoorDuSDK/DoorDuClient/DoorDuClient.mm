@@ -220,7 +220,6 @@ static DoorDuClient * doorDuClient = nil;
     /**这里接通其实是反打过去SIP，这接通成功的时候发送一个MQTT消息（sipTheCallIsConnectedDirection:），告诉其他想接通的人我这里已经接通了，你们可以挂断了，这里过滤掉自己挂断，因为这时自己也会收到这个MQTT推送订阅*/
     /**这里的接听其实是SIP反呼叫过去，*/
     [DoorDuSipCallManager makeCallWithCallType:callType mediaCallType:mediaCallType localMicrophoneEnable:localMicrophoneEnable localSpeakerEnable:localSpeakerEnable localVideoView:localVideoView localCameraOrientation:localCameraOrientation remoteCallerID:remoteCallerID remoteVideoView:remoteVideoView];
-     [DoorDuClient sharedInstance].makeCallType = kDoorDuCallNone;
     /**
      [DoorDuSipCallManager answerSipCallWithMediaCallType:mediaCallType localMicrophoneEnable:localMicrophoneEnable localSpeakerEnable:localSpeakerEnable localCameraOrientation:localCameraOrientation localVideoView:localVideoView remoteVideoView:remoteVideoView];
      */
