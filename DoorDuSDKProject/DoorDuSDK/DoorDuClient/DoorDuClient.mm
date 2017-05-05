@@ -496,22 +496,22 @@ static DoorDuClient * doorDuClient = nil;
 /*mqtt连接成功*/
 - (void)mqttConnectedSuccess
 {
-    DoorDuLogDebug(@"长链接-连接成功");
+    DoorDuLogDebug(@"长连接-连接成功");
 }
 /*mqtt断开连接*/
 - (void)mqttConnectedClosed
 {
-    DoorDuLogDebug(@"长链接-断开了");
+    DoorDuLogDebug(@"长连接-断开了");
 }
 /*mqtt连接失败*/
 - (void)mqttConnectError:(NSError *)error
 {
-    DoorDuLogDebug(@"长链接-连接失败%@",error);
+    DoorDuLogDebug(@"长连接-连接失败%@",error);
 }
 /*mqtt连接被拒*/
 - (void)mqttConnectRefused:(NSError *)error
 {
-    DoorDuLogDebug(@"长链接-连接被拒%@",error);
+    DoorDuLogDebug(@"长连接-连接被拒%@",error);
 }
 #pragma mark - 这里都是后台推过来的，需要反打过去
 /*app来电推送消息，这里主要是户户通的时候来电*/
