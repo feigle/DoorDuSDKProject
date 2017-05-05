@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "DoorDuClientEnum.h"
 
+/**户户通来电界面*/
 @interface UserIncomingViewController : BaseViewController
 
 @property (copy, nonatomic, readwrite) NSString *transactionID;

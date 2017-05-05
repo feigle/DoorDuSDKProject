@@ -364,9 +364,12 @@ static DoorDuClient * doorDuClient = nil;
 {
     [DoorDuClient sharedInstance].isCallConnectedSuccessed = YES;
     /**如果是接通需要发送MQTT推送消息，告知其他房间人，我这里接通了，除了直接呼叫门禁机，只要反打都需要，本类的answerCallWithCallType都是反打机制*/
-    if ([DoorDuClient sharedInstance].isHTTPMakeCallOther) {/**只要是本类的answerCallWithCallType，都是反打机制，在理需要发送MQTT告知这里接听 了，其他终端可以挂断了*/
+    if (![DoorDuClient sharedInstance].isHTTPMakeCallOther) {/**只要是本类的answerCallWithCallType，都是反打机制，在理需要发送MQTT告知这里接听 了，其他终端可以挂断了*/
 #pragma mark - 这是别人打过来，反打过去的时候，发送一个MQTT消息告知其他同房间用户接听了，你们可以挂断电话了
-        [DoorDuMQTTManager publishCallConnected:[DoorDuSipCallManager getUserSipAccount] roomID:self.receiveCallToRoomID transactionID:[DoorDuMqttMessageHandle sharedInstance].transcationID];
+#pragma mark - 这里不是户户通拨打着，接听之后需要发送挂断消息，户户通打过来和门禁机打过来，反打过去的时候建立通话之后需要发送一个挂断消息，告知其他用户可以挂断了
+        if ([DoorDuClient sharedInstance].makeCallType != kDoorDuCallNone) {
+            [DoorDuMQTTManager publishCallConnected:[DoorDuSipCallManager getUserSipAccount] roomID:self.receiveCallToRoomID transactionID:[DoorDuMqttMessageHandle sharedInstance].transcationID];
+        }
     }
     if ([self.callManagerDelegate respondsToSelector:@selector(callDidTheCallIsConnectedSupportVideo:supportData:)]) {
         [self.callManagerDelegate callDidTheCallIsConnectedSupportVideo:supportVideo supportData:supportData];
