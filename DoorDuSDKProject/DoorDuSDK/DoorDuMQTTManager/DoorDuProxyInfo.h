@@ -5,7 +5,7 @@
 //  Created by Doordu on 2017/3/29.
 //  Copyright © 2017年 深圳市多度科技有限公司. All rights reserved.
 //
-// 第三方用户数据
+//  用户数据信息
 
 #import <Foundation/Foundation.h>
 #import "DoorDuAllResponse.h"

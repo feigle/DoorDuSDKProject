@@ -66,13 +66,13 @@ static DoorDuMqttMessageHandle *doorDuMesHandle = nil;//DoorDuApi2单例静态�
         return;
     }
     
-    //当前正在通话，或当前有回话的时候不处理……, (需要上层做控制)
-//    if ([DoorDuMqttMessageHandle sharedInstance].transcationID.length > 0) {
-//        return;
-//    }
-    
     //来电
     if ([cmd isEqualToString:@"makeCall"]) {
+        
+        //当前有会话,忽律来电
+        if ([DoorDuMqttMessageHandle sharedInstance].transcationID.length > 0) {
+            return;
+        }
         
         NSNumber *incomingType = [baseData objectForKey:@"incomingType"];
         // 来电处理 “过滤收到自己的MQTT呼叫包，及房号为空的错误数据”
