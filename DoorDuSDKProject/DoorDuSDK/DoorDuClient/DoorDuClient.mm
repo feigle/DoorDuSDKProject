@@ -235,8 +235,9 @@ static DoorDuClient * doorDuClient = nil;
 #pragma mark - /**拒接来电*/
 + (void)rejectCurrentCall
 {
-    [[self class] __endCallTimeOutTimer];
     [DoorDuSipCallManager rejectCurrentCall];
+    [[self class] __endCallTimeOutTimer];
+    [self __clearDoorDuClientCallData];
 }
 #pragma mark - /**挂断当前呼叫*/
 + (void)hangupCurrentCall
@@ -248,7 +249,7 @@ static DoorDuClient * doorDuClient = nil;
             [DoorDuMQTTManager publishCallEnd:@"" roomID:[DoorDuClient sharedInstance].doorDuCallModel.toRoomId transactionID:[DoorDuClient sharedInstance].doorDuCallModel.transactionId];
         }
     }
-    
+    [[self class] __endCallTimeOutTimer];
     [self __clearDoorDuClientCallData];
 }
 
