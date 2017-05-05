@@ -11,6 +11,7 @@
 #import "DoorDuAllRequestParam.h"
 #import "DoorDuNetServices.h"
 #import "DoorDuProxyInfo.h"
+#import "DoorDuCommonHeader.h"
 
 @implementation DoorDuDataManager
 
@@ -37,6 +38,7 @@
     NSString *deviceTokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
                                  stringByReplacingOccurrencesOfString:@">" withString:@""]
                                 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    DoorDuLog(@"deviceTokenString：\n%@\n",deviceTokenStr);
     [DoorDuProxyInfo sharedInstance].deviceTokenString = deviceTokenStr;
 }
 /**获取deviceToken字符串*/
