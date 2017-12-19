@@ -17,7 +17,7 @@
     self = [super init];
     if (self)
     {
-        _domain = @"https://interface.beta.doordu.com/";
+        _domain = [DoorDuGlobleConfig sharedInstance].httpUrlStr;
         _path = [self buildRequestPath];
     }
     return self;
@@ -28,7 +28,7 @@
     self = [super init];
     if (self)
     {
-        _domain = @"https://interface.beta.doordu.com/";
+        _domain = [DoorDuGlobleConfig sharedInstance].httpUrlStr;
         _path = path;
     }
     return self;
